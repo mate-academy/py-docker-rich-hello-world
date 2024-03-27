@@ -4,14 +4,22 @@ import requests
 
 API_KEY = os.getenv("API_KEY")
 CITY = "Paris"
-URL = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={CITY}"
+payload = {"key": API_KEY, "q": CITY}
+URL = f"http://api.weatherapi.com/v1/current.json"
 
 
 def get_weather() -> None:
-    response = requests.get(URL)
-    data = response.json()
-    celsius = data["current"]["temp_c"]
-    print(f"In {CITY}: {celsius} now")
+    try:
+        response = requests.get(URL, params=payload)
+        data = response.json()
+        county_name = data["location"]["country"]
+        local_time = data["location"]["localtime"]
+        celsius = data["current"]["temp_c"]
+        condition = data["current"]["condition"]["text"]
+        print(f"In {CITY}/{county_name} {local_time} "
+           f"Weather {celsius} Celsius, {condition}")
+    except requests.exceptions.ConnectionError:
+        print("Connection")
 
 
 if __name__ == "__main__":
