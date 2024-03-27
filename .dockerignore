@@ -1,2 +1,5 @@
 venv
 Dockerfile
+.gitignore
+README.md
+.idea
