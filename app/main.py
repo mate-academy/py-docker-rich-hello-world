@@ -8,7 +8,9 @@ FILTERING = "Kyiv"
 
 def get_weather() -> str:
 
-    res = requests.get(f"{URL}key={os.environ.get('API_KEY')}&q={FILTERING}")
+    res = requests.get(
+        url=URL, params={"key": os.environ.get("API_KEY"), "q": FILTERING}
+    )
 
     if res.status_code == 200:
         data = res.json()
