@@ -1,6 +1,39 @@
+import os
+
+import requests
+
+
+API_KEY = os.getenv("API_KEY")
+CITY = "Paris"
+URL = "https://api.weatherapi.com/v1/current.json"
+
+
 def get_weather() -> None:
-    # write your code here
-    pass
+    params = {"key": API_KEY, "q": CITY}
+
+    try:
+        data = requests.get(URL, params).json()
+        country = data["location"]["country"]
+        time = data["current"]["last_updated"]
+        temperature = data["current"]["temp_c"]
+        weather = data["current"]["condition"]["text"]
+
+        print(
+            f"Country: {country}\n"
+            f"City: Paris\n"
+            f"Time: {time}\n"
+            f"Temperature: {temperature}\n"
+            f"Weather: {weather}"
+        )
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching data: {e}")
+
+    except KeyError as e:
+        print(f"Error parsing data: {e}")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 if __name__ == "__main__":
