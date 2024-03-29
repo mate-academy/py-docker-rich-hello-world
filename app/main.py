@@ -25,8 +25,15 @@ def get_weather() -> None:
             f"Temperature: {temperature}\n"
             f"Weather: {weather}"
         )
+
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")
+
+    except KeyError as e:
+        print(f"Error parsing data: {e}")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 if __name__ == "__main__":
