@@ -1,5 +1,4 @@
 import os
-
 import requests
 
 from app.exceptions import MissingAPIKeyError
@@ -20,6 +19,7 @@ def get_weather() -> None:
     }
 
     response = requests.get(URL, params=response_params)
+    response.raise_for_status()  # Raise an exception for unsuccessful response
     weather_data = response.json()
 
     city = weather_data.get(
