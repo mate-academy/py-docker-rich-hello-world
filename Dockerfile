@@ -2,7 +2,7 @@ FROM python:3.11.0-slim
 LABEL maintainer="mr.skyrda@gmail.com"
 
 ENV PYTHONUNBUFFERED 1
-ENV API_KEY 6aee2b17b8a842018aa122043242503
+ENV API_KEY
 
 WORKDIR docker_app/
 
@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "app/main.py"]
+CMD ["sh", "-c", "python -m dotenv -f .env python app/main.py"]

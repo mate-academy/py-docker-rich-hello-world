@@ -7,16 +7,14 @@ URL = "http://api.weatherapi.com/v1/current.json?"
 
 def get_weather(city: str = "Paris") -> requests.Response:
     print(f"Requesting {city} weather from Weather API...")
-    request = requests.get(
-        URL + f"key={API_KEY}&q={city}&aqi=no"
-    ).json()
+    params = {"key": API_KEY, "q": city, "aqi": "no"}
+    response = requests.get(URL, params=params)
 
-    if "error" in request:
-        print(request["error"]["message"])
-        return request
+    if response.status_code != 200:
+        response.raise_for_status()
 
-    location = request["location"]
-    current_temp = request["current"]
+    location = response["location"]
+    current_temp = response["current"]
     condition = current_temp["condition"]
     print("▼" * 50)
     print(
@@ -27,7 +25,7 @@ def get_weather(city: str = "Paris") -> requests.Response:
     )
     print("▲" * 50)
 
-    return request
+    return response
 
 
 if __name__ == "__main__":
