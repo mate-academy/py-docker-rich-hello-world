@@ -4,20 +4,24 @@ import requests
 
 FILTERING = "Paris"
 API_KEY = os.getenv("API_KEY")
-URL = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={FILTERING}"
+URL = f"http://api.weatherapi.com/v1/current.json"
 
 
 def get_weather() -> None:
     print("Performing request to Weather API for city Paris...")
-    response = requests.get(URL)
+    payload = {"key": API_KEY, "q": FILTERING}
+    response = requests.get(URL, params=payload)
 
     if response.status_code == 200:
         data = response.json()
+        city = data["location"]["name"]
+        country = data["location"]["country"]
+        time = data["location"]["localtime"]
+        temperature = data["current"]["temp_c"]
+        weather = data["current"]["condition"]["text"]
         print(
-            f"{data['location']['name']}/{data['location']['country']} "
-            f"{data['location']['localtime']} "
-            f"Weather: {data['current']['temp_c']} Celsius, "
-            f"{data['current']['condition']['text']}"
+            f"{city}/{country} {time}, "
+            f"Weather: {temperature} Celsius, {weather}"
         )
     else:
         print("Failed to fetch weather data.")
