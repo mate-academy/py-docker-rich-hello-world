@@ -13,10 +13,16 @@ CITY = "Paris"
 def get_weather() -> None:
     if not API_KEY:
         raise ValueError("API_KEY environment variable not set")
-    print("Getting weather for city Paris")
-    url = f"{BASE_URL}?key={API_KEY}&q={CITY}&aqi=no"
 
-    response = requests.get(url)
+    print("Getting weather for city Paris")
+
+    params = {
+        "key": API_KEY,
+        "q": CITY,
+        "aqi": "no"
+    }
+
+    response = requests.get(BASE_URL, params=params)
 
     if response.status_code == 200:
         weather_data = response.json()
@@ -29,6 +35,10 @@ def get_weather() -> None:
         print(f"Country: {country}, city: {city}."
               f" Local time: {localtime}, celsius temperature: {temp_c}, "
               f" weather status: {status}")
+    else:
+        print(f"Failed to get weather data. Status code: "
+              f"{response.status_code}, "
+              f"message: {response.text}")
 
 
 if __name__ == "__main__":
