@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.11.9-alpine3.19
 LABEL maintainer="adonos90@gmail.com"
 ENV PYTHOUNNBUFFERED 1
 
@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD["python", "manage.py", "runserver", "0.0.0.0:80"]
+CMD ["python", "app/main.py"]
