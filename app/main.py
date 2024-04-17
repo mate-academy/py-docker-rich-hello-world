@@ -25,11 +25,11 @@ def get_weather() -> None:
             humidity = data["main"]["humidity"]
             wind_speed = data["wind"]["speed"]
 
-            print("Weather in Paris:")
-            print(f"Description: {weather_description}")
-            print(f"Temperature: {temperature}°C")
-            print(f"Humidity: {humidity}%")
-            print(f"Wind Speed: {wind_speed} m/s")
+            print(f"Weather in Paris:\n"
+                  f"Description: {weather_description}\n"
+                  f"Temperature: {temperature}°C\n"
+                  f"Humidity: {humidity}%\n"
+                  f"Wind Speed: {wind_speed} m/s")
         else:
             print("Failed to retrieve weather data.")
     except Exception as e:
