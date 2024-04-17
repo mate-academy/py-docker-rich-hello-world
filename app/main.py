@@ -6,12 +6,14 @@ def get_weather() -> None:
     api_key = os.environ.get("OPENWEATHER_API_KEY")
     if not api_key:
         print(
-            "API key not found. Please set the OPENWEATHER_API_KEY environment variable."
+            "API key not found. Please set the "
+            "OPENWEATHER_API_KEY environment variable."
         )
         return
 
     city = "Paris"
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    url = (f"http://api.openweathermap.org/data/2.5/weather?"
+           f"q={city}&appid={api_key}&units=metric")
 
     try:
         response = requests.get(url)
