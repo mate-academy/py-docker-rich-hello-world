@@ -2,21 +2,21 @@ import os
 import requests
 
 
+API_KEY = os.environ.get("OPENWEATHER_API_KEY")
+URL = "http://api.openweathermap.org/data/2.5/weather"
+
+
 def get_weather() -> None:
-    api_key = os.environ.get("OPENWEATHER_API_KEY")
-    if not api_key:
-        print(
+    params = {"q": "Paris", "appid": API_KEY, "units": "metric"}
+
+    if not API_KEY:
+        raise ValueError(
             "API key not found. Please set the "
             "OPENWEATHER_API_KEY environment variable."
         )
-        return
-
-    city = "Paris"
-    url = (f"http://api.openweathermap.org/data/2.5/weather?"
-           f"q={city}&appid={api_key}&units=metric")
 
     try:
-        response = requests.get(url)
+        response = requests.get(URL, params)
         data = response.json()
 
         if response.status_code == 200:
@@ -25,7 +25,7 @@ def get_weather() -> None:
             humidity = data["main"]["humidity"]
             wind_speed = data["wind"]["speed"]
 
-            print(f"Weather in {city}:")
+            print("Weather in Paris:")
             print(f"Description: {weather_description}")
             print(f"Temperature: {temperature}°C")
             print(f"Humidity: {humidity}%")
