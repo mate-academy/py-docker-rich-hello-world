@@ -3,9 +3,11 @@ import requests
 
 
 def get_weather() -> None:
-    api_key = os.environ.get('OPENWEATHER_API_KEY')
+    api_key = os.environ.get("OPENWEATHER_API_KEY")
     if not api_key:
-        print("API key not found. Please set the OPENWEATHER_API_KEY environment variable.")
+        print(
+            "API key not found. Please set the OPENWEATHER_API_KEY environment variable."
+        )
         return
 
     city = "Paris"
@@ -16,10 +18,10 @@ def get_weather() -> None:
         data = response.json()
 
         if response.status_code == 200:
-            weather_description = data['weather'][0]['description']
-            temperature = data['main']['temp']
-            humidity = data['main']['humidity']
-            wind_speed = data['wind']['speed']
+            weather_description = data["weather"][0]["description"]
+            temperature = data["main"]["temp"]
+            humidity = data["main"]["humidity"]
+            wind_speed = data["wind"]["speed"]
 
             print(f"Weather in {city}:")
             print(f"Description: {weather_description}")
