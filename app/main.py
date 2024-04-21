@@ -1,10 +1,12 @@
+import os
+
 import requests
 
 
 def get_weather() -> None:
-    api_key = "5504e5df372a4f5794490902242104"
+    api_key = os.getenv("API_KEY")
     city = "Paris"
-    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q=" + city
+    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q=" + str(city)
     response = requests.get(url)
     data = response.json()
     location = data["location"]
@@ -14,7 +16,6 @@ def get_weather() -> None:
     print(f"Feels like: {current["feelslike_c"]} °C")
     print(f"Wind speed: {current["wind_kph"]} kp/h")
     print(f"Condition: {current["condition"]["text"]}")
-
 
 if __name__ == "__main__":
     get_weather()
