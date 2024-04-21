@@ -30,17 +30,20 @@ def get_weather() -> None:
         result = response.json()
 
         location = result.get("location", {})
-        print(
-            f"Performing request to Weather API "
-            f"for city {location.get("name", {})}..."
-        )
+        city = location.get("name", {})
+
+        print(f"Performing request to Weather API for city {city}...")
+
+        country = location.get("country", {})
+        localtime = location.get("localtime", {})
 
         current = result.get("current", {})
-        condition = current.get("condition", {})
+        temperature = current.get("temp_c", {})
+        condition = current.get("condition", {}).get("text", {})
+
         print(
-            f"{location.get("name", {})}/{location.get("country", {})} "
-            f"{location.get("localtime", {})} Weather: "
-            f"{current.get("temp_c", {})} Celsius, {condition.get("text", {})}"
+            f"{city}/{country} {localtime} "
+            f"Weather: {temperature} Celsius, {condition}"
         )
 
 
