@@ -13,11 +13,13 @@ def get_weather() -> None:
         data = response.json()
         location = data["location"]
         current = data["current"]
-        print(f"Weather in {location["name"]}, {location["country"]}:")
-        print(f"Temp: {current["temp_c"]} °C")
-        print(f"Feels like: {current["feelslike_c"]} °C")
-        print(f"Wind speed: {current["wind_kph"]} kp/h")
-        print(f"Condition: {current["condition"]["text"]}")
+        print(
+            f"Weather in {location['name']}, {location['country']}:\n"
+            f"Temp: {current['temp_c']} °C\n"
+            f"Feels like: {current['feelslike_c']} °C\n"
+            f"Wind speed: {current['wind_kph']} kp/h\n"
+            f"Condition: {current['condition']['text']}"
+        )
     except Exception:
         print("Error. Please enter API_KEY")
 
