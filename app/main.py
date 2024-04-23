@@ -29,8 +29,13 @@ def get_weather() -> None:
         temperature = current.get("temp_c", "")
         condition = current.get("condition", {}).get("text", "")
 
-        print(f"Performing request to Weather API for city {city}...")
-        print(f"{city}/{country} {localtime} Weather: {temperature} Celsius, {condition}")
+        print(
+            f"Performing request to Weather API for city {city}..."
+        )
+        print(
+            f"{city}/{country} {localtime}"
+            f"Weather: {temperature} Celsius, {condition}"
+        )
 
     except ConnectionError:
         print("Failed to connect to the Weather API.")
