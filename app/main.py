@@ -10,10 +10,10 @@ CITY = "Paris"
 def get_weather() -> None:
     load_dotenv()
 
-    API_KEY = os.getenv("API_KEY")
+    api_key = os.getenv("API_KEY")
 
     result = requests.get(
-        URL + "?key=" + API_KEY + "&q=" + CITY
+        URL + "?key=" + api_key + "&q=" + CITY
     ).json()
 
     city = result.get("location").get("name")
@@ -23,7 +23,8 @@ def get_weather() -> None:
     weather_condition = result.get("current").get("condition").get("text")
 
     print(
-        f"The weather in {city}({country}) at {localtime} is {weather_condition}. "
+        f"The weather in {city}({country}) "
+        f"at {localtime} is {weather_condition}. "
         f"Temperature is {temperature_by_celsius} degrees Celsius"
     )
 
