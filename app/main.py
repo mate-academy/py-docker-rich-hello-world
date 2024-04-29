@@ -1,9 +1,6 @@
 import requests
 import os
 
-# from dotenv import load_dotenv
-# load_dotenv('config.env')
-
 api_key = os.getenv("WEATHER_API_KEY")
 
 
@@ -14,10 +11,13 @@ def get_weather() -> None:
     if response.status_code == 200:
         data = response.json()
         print(data)
-    # elif not api_key:
-
+    elif response.status_code == 404:
+        print("Not Found")
     else:
-        print("Error:", response.status_code)
+        print(
+            f"Error: Failed to retrieve weather data. "
+            f"Status Code: {response.status_code}"
+        )
 
 
 if __name__ == "__main__":
