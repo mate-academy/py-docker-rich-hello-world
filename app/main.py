@@ -4,8 +4,10 @@ import requests
 CITY = "Paris"
 API_KEY = os.environ.get("API_KEY")
 
+
 def get_weather() -> None:
-    res = requests.get(f"https://api.weatherapi.com/v1/current.json?key={API_KEY}&q={CITY}&aqi=no")
+    res = requests.get(f"https://api.weatherapi.com/v1/current.json?"
+                       f"key={API_KEY}&q={CITY}&aqi=no")
 
     if res.status_code != 200:
         print("Something went")
@@ -25,7 +27,6 @@ def get_weather() -> None:
             f"{city}/{country} {time} "
             f"Weather : {temp} Celsius, {weather_name.capitalize()}"
         )
-
 
 
 if __name__ == "__main__":
