@@ -12,13 +12,12 @@ def get_weather() -> None:
         return
 
     data = req.json()
-    city = data["location"]["name"]
-    country = data["location"]["country"]
+    location = f"{data['location']['name']}/{data['location']['country']}"
     local_time = data["location"]["localtime"]
     temperature = data["current"]["temp_c"]
     condition = data["current"]["condition"]["text"]
     print(
-        f"{city}/{country} {local_time} Weather: {temperature} Celsius, {condition}"
+        f"{location} {local_time} Weather: {temperature} Celsius, {condition}"
     )
 
 
