@@ -16,10 +16,10 @@ def get_weather() -> None:
 
     url = base_url + "key=" + api_key + "&q=" + city
 
-    try:
-        requests.get(url).status_code == 200
-    except ValueError:
-        print("Invalid status code")
+    response = requests.get(url)
+
+    if response.status_code != 200:
+        raise ValueError("Invalid status code")
 
     response_json = requests.get(url).json()
 
