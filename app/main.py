@@ -14,19 +14,23 @@ def get_weather() -> None:
 
     result = requests.get(
         URL + "?key=" + api_key + "&q=" + CITY
-    ).json()
-
-    city = result.get("location").get("name")
-    country = result.get("location").get("country")
-    localtime = result.get("location").get("localtime")
-    temperature_by_celsius = result.get("current").get("temp_c")
-    weather_condition = result.get("current").get("condition").get("text")
-
-    print(
-        f"The weather in {city}({country}) "
-        f"at {localtime} is {weather_condition}. "
-        f"Temperature is {temperature_by_celsius} degrees Celsius"
     )
+
+    if result.status_code == 200:
+        result = result.json()
+        city = result["location"]["name"]
+        country = result["location"]["country"]
+        localtime = result["location"]["localtime"]
+        temperature_by_celsius = result["current"]["temp_c"]
+        weather_condition = result["current"]["condition"]["text"]
+
+        print(
+            f"The weather in {city}({country}) "
+            f"at {localtime} is {weather_condition}. "
+            f"Temperature is {temperature_by_celsius} degrees Celsius"
+        )
+    else:
+        result.raise_for_status()
 
 
 if __name__ == "__main__":
