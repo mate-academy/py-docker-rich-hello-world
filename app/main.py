@@ -18,7 +18,8 @@ def get_weather() -> None:
     data = res.json()
     weather_description = data["current"]["condition"]["text"]
     temperature = data["current"]["temp_c"]
-    print(f"The weather in Paris is {weather_description} with a temperature of {temperature}°C.")
+    print(f"The weather in Paris is {weather_description}"
+          f"with a temperature of {temperature}°C.")
 
 
 if __name__ == "__main__":
