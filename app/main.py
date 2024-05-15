@@ -3,13 +3,13 @@ from datetime import datetime
 
 
 def get_weather() -> None:
-    URL = "https://api.weatherapi.com/v1/current.json"
+    url = "https://api.weatherapi.com/v1/current.json"
     city = "Paris"
     current_date = datetime.now()
     current_date_str = current_date.strftime("%Y-%m-%d %H:%M")
     api_key = "83df8e21cee84033bc8144312241305"
 
-    response = requests.get(URL, params={"key": api_key, "q": city})
+    response = requests.get(url, params={"key": api_key, "q": city})
     weather_data = response.json()
 
     if "error" in weather_data:
