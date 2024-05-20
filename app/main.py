@@ -1,4 +1,5 @@
 import os
+
 import requests
 
 
@@ -9,10 +10,20 @@ def get_weather() -> None:
 
     if not api_key:
         raise ValueError(
-            "No API key found. Please set the API_KEY environment variable."
+            "No API key found. "
+            "Please set the API_KEY environment variable."
         )
 
     response = requests.get(f"{url}?q={filtering}&key={api_key}")
+
+    # Check for invalid API key
+    if response.status_code == 401:
+        raise ValueError("Invalid API key. "
+                         "Please check your API key and try again.")
+
+    if response.status_code != 200:
+        raise Exception(f"API request failed with status code "
+                        f"{response.status_code}: {response.text}")
 
     dict_result = response.json()
 
@@ -26,7 +37,7 @@ def get_weather() -> None:
         f"{dict_result['location']['country']}"
     )
 
-    time = dict_result["location"]["localtime"]
+    time = dict_result['location']['localtime']
 
     result = f"{location} {time} {weather}"
     print("Performing request to Weather API for city Paris...")
