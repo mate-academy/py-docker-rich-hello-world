@@ -26,7 +26,7 @@ def get_weather() -> None:
         f"{dict_result['location']['country']}"
     )
 
-    time = dict_result['location']['localtime']
+    time = dict_result["location"]["localtime"]
 
     result = f"{location} {time} {weather}"
     print("Performing request to Weather API for city Paris...")
