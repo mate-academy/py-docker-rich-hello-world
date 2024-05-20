@@ -17,16 +17,16 @@ def get_weather() -> None:
     dict_result = response.json()
 
     weather = (
-        f"Weather: {dict_result["current"]["temp_c"]} Celsius, "
-        f"{dict_result["current"]["condition"]["text"]}"
+        f"Weather: {dict_result['current']['temp_c']} Celsius, "
+        f"{dict_result['current']['condition']['text']}"
     )
 
     location = (
-        f"{dict_result["location"]["name"]}/"
-        f"{dict_result["location"]["country"]}"
+        f"{dict_result['location']['name']}/"
+        f"{dict_result['location']['country']}"
     )
 
-    time = dict_result["location"]["localtime"]
+    time = dict_result['location']['localtime']
 
     result = f"{location} {time} {weather}"
     print("Performing request to Weather API for city Paris...")
