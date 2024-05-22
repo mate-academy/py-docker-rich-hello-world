@@ -31,12 +31,11 @@ def get_weather() -> None:
     response = requests.get(URL, params=payload)
     response_data = json.loads(response.content)
 
-    if response.status_code == 200:
+    try:
         print(get_str_from_dict(response_data))
-    else:
+    except Exception as e:
         print(
-            f"Status code is {response.status_code}. "
-            f"Error: {response_data.get('error')}"
+            f"An error occurred: {e}"
         )
 
 
