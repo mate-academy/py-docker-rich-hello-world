@@ -29,10 +29,10 @@ def get_weather(city: str = "Paris") -> None:
             }
             print(
                 f"City: "
-                f"{weather["city"]}, {weather["region"]}, {weather["country"]}"
+                f"{weather['city']}, {weather['region']}, {weather['country']}"
             )
-            print(f"Temperature: {weather["temperature"]}°C")
-            print(f"Condition: {weather["condition"]}")
+            print(f"Temperature: {weather['temperature']}°C")
+            print(f"Condition: {weather['condition']}")
     else:
         print("City not found or API request failed.")
 
