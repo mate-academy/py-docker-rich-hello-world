@@ -17,18 +17,21 @@ def get_weather(city="Paris") -> None:
     response = requests.get(BASE_URL, params=params)
     if response.status_code == 200:
         data = response.json()
-        weather = {
-            "city": data["location"]["name"],
-            "region": data["location"]["region"],
-            "country": data["location"]["country"],
-            "temperature": data["current"]["temp_c"],
-            "condition": data["current"]["condition"]["text"],
-        }
-        print(
-            f"City: {weather["city"]}, {weather["region"]}, {weather["country"]}"
-        )
-        print(f"Temperature: {weather["temperature"]}°C")
-        print(f"Condition: {weather["condition"]}")
+        if "error" in data:
+            print("City not found or API request failed.")
+        else:
+            weather = {
+                "city": data["location"]["name"],
+                "region": data["location"]["region"],
+                "country": data["location"]["country"],
+                "temperature": data["current"]["temp_c"],
+                "condition": data["current"]["condition"]["text"],
+            }
+            print(
+                f"City: {weather["city"]}, {weather["region"]}, {weather["country"]}"
+            )
+            print(f"Temperature: {weather["temperature"]}°C")
+            print(f"Condition: {weather["condition"]}")
     else:
         print("City not found or API request failed.")
 

@@ -3,7 +3,7 @@ LABEL maintainer="vitaliyburkalo81@gmail.com"
 
 ENV PYTHOUNNBUFFERED 1
 
-WORKDIR app/app/
+WORKDIR /app
 
 COPY requirements.txt requirements.txt
 
