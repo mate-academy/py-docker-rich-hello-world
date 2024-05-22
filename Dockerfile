@@ -1,9 +1,9 @@
-FROM python:3.12-slim
+FROM python:3.12-alpine
 LABEL maintainer="vitaliyburkalo81@gmail.com"
 
 ENV PYTHOUNNBUFFERED 1
 
-WORKDIR app/
+WORKDIR app/app/
 
 COPY requirements.txt requirements.txt
 

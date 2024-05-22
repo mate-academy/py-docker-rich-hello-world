@@ -8,8 +8,8 @@ API_KEY = os.getenv("API_KEY")
 BASE_URL = "http://api.weatherapi.com/v1/current.json"
 
 
-def get_weather() -> None:
-    city = input("Enter city name: ")
+def get_weather(city="Paris") -> None:
+    print(f"Performing request to Weather API for city {city}...")
     params = {
         "key": API_KEY,
         "q": city,
@@ -25,8 +25,7 @@ def get_weather() -> None:
             "condition": data["current"]["condition"]["text"],
         }
         print(
-            f"City: "
-            f"{weather["city"]}, {weather["region"]}, {weather["country"]}"
+            f"City: {weather["city"]}, {weather["region"]}, {weather["country"]}"
         )
         print(f"Temperature: {weather["temperature"]}°C")
         print(f"Condition: {weather["condition"]}")
