@@ -28,11 +28,16 @@ def get_weather() -> None:
         "q": FILTERING,
         "key": API_KEY
     }
-    response = requests.get(URL, params=payload)
-    response_data = json.loads(response.content)
-
     try:
-        print(get_str_from_dict(response_data))
+        response = requests.get(URL, params=payload)
+        response_data = json.loads(response.content)
+
+        if response.status_code == 200:
+            print(get_str_from_dict(response_data))
+        else:
+            print(f"Status code is {response.status_code}."
+                  "Failed to retrieve info.")
+
     except Exception as e:
         print(
             f"An error occurred: {e}"
