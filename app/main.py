@@ -11,18 +11,18 @@ URL = (
 
 def get_weather() -> None:
     weather = requests.get(URL)
-    if weather.status_code == 200:
-        weather = weather.json()
-        print(
-            f"{weather['location']['name']}/{weather['location']['country']}",
-            weather["current"]["last_updated"],
-            "Weather:",
-            weather["current"]["temp_c"],
-            "Celsius,",
-            weather["current"]["condition"]["text"]
-        )
-    else:
+    if not weather.status_code == 200:
         weather.raise_for_status()
+
+    weather = weather.json()
+    print(
+        f"{weather['location']['name']}/{weather['location']['country']}",
+        weather["current"]["last_updated"],
+        "Weather:",
+        weather["current"]["temp_c"],
+        "Celsius,",
+        weather["current"]["condition"]["text"]
+    )
 
 
 if __name__ == "__main__":
