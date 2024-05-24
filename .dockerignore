@@ -1,0 +1,11 @@
+.github
+venv
+.env
+.gitignore
+checklist.md
+README.md
+result.png
+cur.py
+cur2.py
+Dockerfile
+commands
