@@ -25,6 +25,8 @@ def get_weather() -> None:
             f"{location_name}/{location_country} {localtime} "
             f"Weather: {temperature} Celsiush {weather}"
         )
+    else:
+        print(f"Failed to fetch weather data: code {response.status_code}")
 
 
 if __name__ == "__main__":
