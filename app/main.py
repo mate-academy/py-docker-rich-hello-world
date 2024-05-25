@@ -16,12 +16,14 @@ def get_weather() -> None:
     response = requests.get(URL, params={"key": API_KEY, "q": FILTERING})
     if response.status_code == 200:
         data = response.json()
-        location = f"{data["location"]["name"]}/{data["location"]["country"]}"
+        location_name = data["location"]["name"]
+        location_country = data["location"]["country"]
         localtime = data["location"]["localtime"]
         temperature = data["current"]["temp_c"]
         weather = data["current"]["condition"]["text"]
         print(
-            f"{location} {localtime} Weather: {temperature} Celsiush {weather}"
+            f"{location_name}/{location_country} {localtime} "
+            f"Weather: {temperature} Celsiush {weather}"
         )
 
 
