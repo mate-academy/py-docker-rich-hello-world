@@ -20,6 +20,8 @@ def get_str_from_dict(response_data: dict) -> str:
 
     return f"{city}/{country} {time} Weather: {temp_c} Celsius, {condition}"
 
+
+def get_weather() -> None:
     print(f"Performing request to Weather API for city {FILTERING}...")
 
     payload = {
