@@ -29,7 +29,9 @@ def get_weather(city: str = "Paris") -> None:
                 "temperature": data["current"]["temp_c"],
                 "condition": data["current"]["condition"]["text"],
             }
-            print(f"City: {weather['city']}, {weather['region']}, {weather['country']}")
+            print(f"City: {weather['city']}, "
+                  f"{weather['region']}, "
+                  f"{weather['country']}")
             print(f"Temperature: {weather['temperature']}°C")
             print(f"Condition: {weather['condition']}")
     else:
