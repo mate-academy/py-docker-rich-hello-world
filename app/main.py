@@ -8,7 +8,10 @@ def get_weather() -> None:
 
     api_key = os.environ["API_KEY"]
     date_now = datetime.now().strftime("%Y-%m-%d %H:%M")
-    response = requests.get(f"https://api.weatherapi.com/v1/current.json?key={api_key}&q=Paris&aqi=no").json()
+    response = requests.get(
+        f"https://api.weatherapi.com/v1/current.json"
+        f"?key={api_key}&q=Paris&aqi=no"
+    ).json()
     temp = response["current"]["temp_c"]
     condition = response["current"]["condition"]["text"]
 
