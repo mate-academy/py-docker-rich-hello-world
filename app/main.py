@@ -9,8 +9,8 @@ load_dotenv()
 def get_weather(city: str, api_key: str) -> None:
     base_url = "http://api.weatherapi.com/v1/current.json"
     params = {
-        'key': api_key,
-        'q': city,
+        "key": api_key,
+        "q": city,
     }
 
     response = requests.get(base_url, params=params)
@@ -40,4 +40,4 @@ def get_weather(city: str, api_key: str) -> None:
 
 
 if __name__ == "__main__":
-    get_weather("Paris", api_key=os.getenv('WEATHER_API_KEY'))
+    get_weather("Paris", api_key=os.getenv("WEATHER_API_KEY"))
