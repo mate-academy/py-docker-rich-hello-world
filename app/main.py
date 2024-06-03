@@ -3,8 +3,7 @@ import requests
 
 API_KEY = os.environ.get("API_KEY")
 FILTERING = "Paris"
-URL = "https://api.weatherapi.com/v1"
-
+URL = f"https://api.weatherapi.com/v1/current.json?key={API_KEY}&q={FILTERING}"
 
 def get_weather() -> None:
     if not API_KEY:
@@ -12,8 +11,7 @@ def get_weather() -> None:
             "No API key provided.Set the WEATHER_API_KEY environment variable."
         )
 
-    url = f"{URL}/current.json?key={API_KEY}&q={FILTERING}"
-    response = requests.get(url)
+    response = requests.get(URL)
 
     if response.status_code == 200:
         data = response.json()
