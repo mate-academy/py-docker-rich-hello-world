@@ -3,17 +3,17 @@ import requests
 
 
 def get_weather() -> None:
-    API_KEY = os.getenv("API_KEY")
-    URL = "http://api.weatherapi.com/v1/current.json"
-    FILTERING = "Paris"
-    if API_KEY is None:
+    api_key = os.getenv("API_KEY")
+    url = "http://api.weatherapi.com/v1/current.json"
+    filtering = "Paris"
+    if api_key is None:
         raise ValueError("API_KEY environment variable is not set")
     payload = {
-        "key": API_KEY,
-        "q": FILTERING,
+        "key": api_key,
+        "q": filtering,
     }
     print("Performing request to Weather API for city Paris...")
-    result = requests.get(URL, params=payload)
+    result = requests.get(url, params=payload)
     data = result.json()
     print(
         f"{data['location']['name']}/{data['location']['country']} "
