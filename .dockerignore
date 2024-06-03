@@ -1,0 +1,14 @@
+# Ignore Python bytecode files
+*.pyo
+# Ignore virtual environments
+.venv/
+
+# Ignore any other unnecessary files or directories
+.DS_Store
+.git
+.gitignore
+.github
+result.png
+checklist.md
+README.md
+.flake8
