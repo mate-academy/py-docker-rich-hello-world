@@ -12,7 +12,7 @@ if not API_KEY:
 
 def get_weather() -> None:
     print(f"Performing request to Weather API for city {FILTERING}...")
-    result = requests.get(URL + f"q={FILTERING}&key={API_KEY}").json()
+    result = requests.get(URL, params={"key": API_KEY, "q": FILTERING}).json()
     print(
         f'{result["location"]["name"]}/{result["location"]["country"]} '
         f'{result["location"]["localtime"]} '
