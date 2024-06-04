@@ -18,10 +18,10 @@ def get_weather() -> None:
 
     request = request.json()
     print(
-        f"{request["location"]["name"]}/{request["location"]["country"]} "
-        f"{request["current"]["last_updated"]} "
-        f"Weather: {request["current"]["temp_c"]} Celsius, "
-        f"{request["current"]["condition"]["text"]}"
+        f"{request['location']['name']}/{request['location']['country']} "
+        f"{request['current']['last_updated']} "
+        f"Weather: {request['current']['temp_c']} Celsius, "
+        f"{request['current']['condition']['text']}"
     )
 
 
