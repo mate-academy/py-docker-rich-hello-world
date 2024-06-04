@@ -1,0 +1,38 @@
+# Ignore virtual environment directories
+venv/
+
+# Ignore development environment configuration files
+.idea/
+
+# Ignore system files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+
+# Ignore version control directories and files
+.github
+.gitignore
+.gitattributes
+.git
+
+# Ignore testing and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Ignore images and other unnecessary files for the Docker image
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Ignore documentation and development tool configuration files
+*.md
+.flake8
+
+
+Dockerfile
