@@ -3,6 +3,11 @@ from datetime import datetime
 import requests
 
 
+API_URL = "https://api.weatherapi.com/v1/current.json"
+CITY = "Paris"
+AQI = "no"
+
+
 def get_weather() -> None:
     try:
         print("Performing request to Weather API for city Paris...")
@@ -10,8 +15,8 @@ def get_weather() -> None:
         api_key = os.environ["API_KEY"]
         date_now = datetime.now().strftime("%Y-%m-%d %H:%M")
         response = requests.get(
-            f"https://api.weatherapi.com/v1/current.json"
-            f"?key={api_key}&q=Paris&aqi=no"
+            f"{API_URL}"
+            f"?key={api_key}&q={CITY}&aqi={AQI}"
         ).json()
         temp = response["current"]["temp_c"]
         condition = response["current"]["condition"]["text"]
