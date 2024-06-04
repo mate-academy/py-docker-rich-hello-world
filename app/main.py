@@ -49,6 +49,6 @@ def get_weather(city: str, key: str) -> None:
 
 
 if __name__ == "__main__":
-    city_name = "Paris"
+    city_name = os.environ.get("CITY", "London")
     api_key = os.environ.get("API_KEY")
     get_weather(city_name, api_key)
