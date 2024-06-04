@@ -21,5 +21,6 @@ def get_weather() -> None:
         f"{data['current']['condition']['text']}"
     )
 
+
 if __name__ == "__main__":
     get_weather()
