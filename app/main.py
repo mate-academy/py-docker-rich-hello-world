@@ -23,5 +23,6 @@ def get_weather() -> None:
     elif response.status_code == 403:
         print("Some problem with your API_KEY!")
 
+
 if __name__ == "__main__":
     get_weather()
