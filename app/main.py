@@ -7,7 +7,9 @@ BASE_URL = "https://api.weatherapi.com/v1/current.json?"
 
 def get_weather(city: str) -> None:
     if not API_KEY:
-        raise ValueError("No API key provided. Set the API_KEY environment variable.")
+        raise ValueError(
+            "No API key provided. Set the API_KEY environment variable."
+        )
 
     response = requests.get(BASE_URL, params={"key": API_KEY, "q": city})
 
@@ -15,7 +17,10 @@ def get_weather(city: str) -> None:
         data = response.json()
         print(f"Performing request to Weather API for city {city}...")
         print(
-            f"{city}/{data['location']['country']} {data['location']['localtime']} Weather: {data['current']['temp_c']}°C, {data['current']['condition']['text']}")
+            f"{city}/{data['location']['country']} "
+            f"{data['location']['localtime']} "
+            f"Weather: {data['current']['temp_c']}°C, "
+            f"{data['current']['condition']['text']}")
     else:
         print(f"Error: {response.status_code}")
 
