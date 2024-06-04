@@ -36,15 +36,16 @@ def get_weather(city: str, key: str) -> None:
         "NW": "Northwest"
     }.get(data["current"]["wind_dir"])
 
-    print(f"Welcome to {data['location']['name']}, {data['location']['country']}!\n"
-          f"Today is {data['location']['localtime']} and it is {daytime}.\n"
-          f"The current temperature is {data['current']['temp_c']}°C "
-          f"({data['current']['temp_f']}°F) with "
-          f"{data['current']['condition']['text'].lower()} conditions.\n"
-          f"The wind speed is {data['current']['wind_kph']} kph coming "
+    print(f"Welcome to {data["location"]["name"]}, "
+          f"{data["location"]["country"]}!\n"
+          f"Today is {data["location"]["localtime"]} and it is {daytime}.\n"
+          f"The current temperature is {data["current"]["temp_c"]}°C "
+          f"({data["current"]["temp_f"]}°F) with "
+          f"{data["current"]["condition"]["text"].lower()} conditions.\n"
+          f"The wind speed is {data["current"]["wind_kph"]} kph coming "
           f"from the {wind_direction} direction.\n"
-          f"The humidity is {data['current']['humidity']}% and the "
-          f"visibility is {data['current']['vis_km']} kilometers.\n"
+          f"The humidity is {data["current"]["humidity"]}% and the "
+          f"visibility is {data["current"]["vis_km"]} kilometers.\n"
           f"Have a good {daytime}!")
 
 
