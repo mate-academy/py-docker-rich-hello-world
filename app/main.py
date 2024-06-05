@@ -15,9 +15,9 @@ URL = "http://api.weatherapi.com/v1/current.json?"
 def get_weather() -> None:
     weather = requests.get(URL, params={"key": KEY, "q": CITY}).json()
     print(
-        f"{weather["location"]["name"]}({weather["location"]["country"]})\n"
-        f"Time: {weather["location"]["localtime"]}\n"
-        f"Weather: {weather["current"]["temp_c"]} Celsius"
+        f"{weather['location']['name']}({weather['location']['country']})\n"
+        f"Time: {weather['location']['localtime']}\n"
+        f"Weather: {weather['current']['temp_c']} Celsius"
     )
 
 
