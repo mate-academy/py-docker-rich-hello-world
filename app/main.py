@@ -1,6 +1,6 @@
 import os
 import requests
-from typing import Optional
+
 
 API_KEY = os.getenv("API_KEY")
 CITY = "Paris"
