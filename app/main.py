@@ -1,14 +1,14 @@
 import requests
 from datetime import datetime
 
+API_KEY = "2a40a2a2837b4d50ae954326240506"
+LOCATION = "Kharkiv"
+URL = f"http://api.weatherapi.com/v1/current.json"
+
 
 def get_weather() -> None:
-    api_key = "2a40a2a2837b4d50ae954326240506"
-    location = "Kharkiv"
-    url = f"http://api.weatherapi.com/v1/current.json"
-
     try:
-        response = requests.get(url, params={"key": api_key, "q": location})
+        response = requests.get(URL, params={"key": API_KEY, "q": LOCATION})
         data = response.json()
         if response.status_code == 200:
             location_name = data['location']['name']
