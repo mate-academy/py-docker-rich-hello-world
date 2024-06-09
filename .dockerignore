@@ -1,0 +1,12 @@
+*.pyo
+
+.venv/
+
+.DS_Store
+.git
+.gitignore
+.github
+result.png
+checklist.md
+README.md
+.flake8
