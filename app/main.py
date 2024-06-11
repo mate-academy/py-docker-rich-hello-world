@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = "e76c81a005944e4bac6142817240406"
 KEY = os.getenv("API_KEY")
 CITY = "Paris"
 
