@@ -6,7 +6,6 @@ API_KEY = config("API_KEY")
 URL = "https://api.weatherapi.com/v1/current.json"
 
 
-
 def get_weather(city: str) -> None:
     print(f"Performing request to Weather API for city {city}...")
     response = requests.get(URL, params={"key": API_KEY, "q": city})
