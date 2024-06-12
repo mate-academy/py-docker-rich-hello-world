@@ -3,14 +3,13 @@ from decouple import config
 
 
 API_KEY = config("API_KEY")
-CITY_NAME = "Paris"
-URL = (f"https://api.weatherapi.com/v1/current.json"
-       f"?key={API_KEY}&q={CITY_NAME}&aqi=no")
+URL = "https://api.weatherapi.com/v1/current.json"
 
 
-def get_weather() -> None:
-    print(f"Performing request to Weather API for city {CITY_NAME}...")
-    response = requests.get(URL)
+
+def get_weather(city: str) -> None:
+    print(f"Performing request to Weather API for city {city}...")
+    response = requests.get(URL, params={"key": API_KEY, "q": city})
 
     if response.status_code == 200:
         data = response.json()
@@ -25,4 +24,4 @@ def get_weather() -> None:
 
 
 if __name__ == "__main__":
-    get_weather()
+    get_weather(city="Paris")
