@@ -1,5 +1,6 @@
 import json
 import urllib.request
+requests
 
 
 def get_weather(api_key: str) -> None:
