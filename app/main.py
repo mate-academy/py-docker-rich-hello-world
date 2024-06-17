@@ -1,5 +1,8 @@
 import requests
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 WEATHER_API_URL = "http://api.weatherapi.com/v1/current.json"
