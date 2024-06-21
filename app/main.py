@@ -10,6 +10,10 @@ url = BASE_URL + "key=" + API_KEY + "&q=" + CITY + "&aqi=no"
 
 def get_weather() -> None:
     response = requests.get(url)
+    if response.status_code != 200:
+        print(f"Failed to get weather. Status code: {response.status_code}")
+        return
+
     data = response.json()
     location = data.get("location")
     current = data.get("current")
@@ -22,8 +26,7 @@ def get_weather() -> None:
                )
 
     result = city + " " + time + " " + weather
-    print("Performing request to Weather API for city Paris...")
-    print(result)
+    print(f"Performing request to Weather API for city Paris...\n{result}")
 
 
 if __name__ == "__main__":
