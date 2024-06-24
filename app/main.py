@@ -25,7 +25,7 @@ def get_weather() -> None:
                f"Celsius, {current.get('condition').get('text')}"
                )
 
-    result = city + " " + time + " " + weather
+    result = f"{city} {time} {weather}"
     print(f"Performing request to Weather API for city Paris...\n{result}")
 
 
