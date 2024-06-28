@@ -12,7 +12,7 @@ def get_weather() -> str:
     respond = requests.get(url=url, params=payload)
     if respond.status_code == 200:
         return respond.text
-    return "Something went wrong"
+    return f"Something went wrong with status code: {respond.status_code}"
 
 
 if __name__ == "__main__":
