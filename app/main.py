@@ -10,7 +10,9 @@ def get_weather() -> str:
         "q": "Paris"
     }
     respond = requests.get(url=url, params=payload)
-    return respond.text
+    if respond.status_code == 200:
+        return respond.text
+    return "Something went wrong"
 
 
 if __name__ == "__main__":
