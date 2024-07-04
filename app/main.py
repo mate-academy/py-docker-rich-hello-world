@@ -30,10 +30,16 @@ def get_weather() -> None:
 
     if response.status_code == 200:
         weather_data = response.json()
-        print(f"Current weather in Paris: {weather_data['current']['temp_c']}°C")
+        print(
+            f"Current weather in Paris: {weather_data["current"]["temp_c"]}°C"
+        )
     else:
         print(
-            f"Failed to get weather data: {response.status_code} - {response.json().get('error', {}).get('message', 'No error message')}")
+            f"Failed to get weather data: {response.status_code} - "
+            f"{response.json().get("error", {}).get(
+                "message", "No error message"
+            )}"
+        )
 
 
 if __name__ == "__main__":
