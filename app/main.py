@@ -36,9 +36,6 @@ def get_weather() -> None:
     else:
         print(
             f"Failed to get weather data: {response.status_code} - "
-            f"{response.json().get('error', {}).get(
-                'message', 'No error message'
-            )}"
         )
 
 
