@@ -1,4 +1,4 @@
-FROM python:3.10.12-slim-bullseye
+FROM python:3.10.12-alpine3.17
 
 LABEL maintainer='mykm3ua@gmail.com'
 
