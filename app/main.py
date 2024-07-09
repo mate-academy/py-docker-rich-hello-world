@@ -19,7 +19,7 @@ def get_weather() -> None:
         weather = data["weather"][0]["description"]
         print(f"Weather in {city}: {weather.capitalize()}, {temp}°C")
     else:
-        print(f"Error: {data["message"]}")
+        print(f"Error: {data['message']}")
 
 
 if __name__ == "__main__":
