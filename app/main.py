@@ -17,9 +17,10 @@ def get_weather() -> None:
         "appid": api_key,
         "units": "metric"
     }
+    response = requests.get(url)
     data = requests.get(url, params=params)
 
-    if data.status_code == 200:
+    if response.status_code == 200:
         temp = data["main"]["temp"]
         weather = data["weather"][0]["description"]
         print(f"Weather in {CITY}: {weather.capitalize()}, {temp}°C")
