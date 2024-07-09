@@ -11,12 +11,15 @@ def get_weather() -> None:
         print("API_KEY environment variable not set.")
         return
 
-    url = (f"http://api.openweathermap.org/data/2.5/weather?"
-           f"q={CITY}&appid={api_key}&units=metric")
-    response = requests.get(url)
-    data = response.json()
+    url = "http://api.openweathermap.org/data/2.5/weather"
+    params = {
+        "q": CITY,
+        "appid": api_key,
+        "units": "metric"
+    }
+    data = requests.get(url, params=params)
 
-    if response.status_code == 200:
+    if data.status_code == 200:
         temp = data["main"]["temp"]
         weather = data["weather"][0]["description"]
         print(f"Weather in {CITY}: {weather.capitalize()}, {temp}°C")
