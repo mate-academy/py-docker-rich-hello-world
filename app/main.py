@@ -2,7 +2,7 @@ import os
 import requests
 
 
-BASE_URL = "http://api.weatherapi.com/v1/currnt.json"
+BASE_URL = "http://api.weatherapi.com/v1/current.json"
 Q_FILTER = "Paris"
 
 
@@ -14,12 +14,11 @@ def get_weather() -> None:
         result = response.json()
         condition = result["current"]["condition"]["text"]
         local_time = result["location"]["localtime"]
-        weather = f"Weather: {result['current']['temp_c']} Celsius, {condition}"
+        weather = (f"Weather: "
+                   f"{result['current']['temp_c']} Celsius, {condition}")
         print(f"Paris/France, {local_time}, {weather}")
     elif response.status_code == 403:
         print("Your API_KEY is invalid or not provided.")
-    elif response.status_code == 404:
-        print("Request url is not valid.")
     else:
         print(response.reason)
 
