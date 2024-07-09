@@ -4,6 +4,7 @@ import requests
 CITY = "Paris"
 API_KEY = os.getenv("API_KEY")
 
+
 def get_weather() -> None:
     if not API_KEY:
         raise EnvironmentError("API_KEY environment variable not set.")
