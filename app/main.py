@@ -1,10 +1,11 @@
 import os
 import requests
 
+CITY = "Paris"
+
 
 def get_weather() -> None:
     api_key = os.getenv("API_KEY")
-    CITY = "Paris"
 
     if not api_key:
         print("API_KEY environment variable not set.")
