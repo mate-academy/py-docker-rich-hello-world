@@ -10,7 +10,8 @@ def get_weather() -> None:
         print("API_KEY environment variable not set.")
         return
 
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    url = (f"http://api.openweathermap.org/data/2.5/weather?"
+           f"q={city}&appid={api_key}&units=metric")
     response = requests.get(url)
     data = response.json()
 
