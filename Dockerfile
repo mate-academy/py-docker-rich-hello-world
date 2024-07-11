@@ -1,4 +1,4 @@
-FROM python:3.11-alpine3.20
+FROM python:3.11-slim
 LABEL authors="specializedDev"
 
 ENV PYTHONUNBUFFERED 1
@@ -12,6 +12,4 @@ COPY . .
 
 ENV API_KEY=${API_KEY}
 
-CMD ["python", "app/main.py", "0.0.0.0:8000"]
-
-# docker run -e API_KEY=$API_KEY your_docker_image
+CMD ["python", "app/main.py"]
