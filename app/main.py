@@ -7,8 +7,11 @@ Q_FILTER = "Paris"
 
 
 def get_weather() -> None:
-    url = f"{BASE_URL}?key={os.getenv('API_KEY')}"
-    response = requests.get(url, params={"q": Q_FILTER})
+    url = f"{BASE_URL}"
+    response = requests.get(
+        url,
+        params={"q": Q_FILTER, "key": {os.getenv("API_KEY")}},
+    )
 
     if response.status_code == 200:
         result = response.json()
