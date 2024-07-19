@@ -16,18 +16,18 @@ def get_weather() -> None:
         }
     )
 
-    if response.status_code != 200:
+    if response:
+        data = response.json()
+        print(
+            f"Performing request to Weather API for city {CITY}...\n"
+            f"{data['location']['name']}/{data['location']['country']}, "
+            f"{data['current']['last_updated']} "
+            f"Weather: {data['current']['temp_c']} Celsius, "
+            f"{data['current']['condition']['text']}."
+        )
+    else:
         print(f"Can't get data from Weather API. "
               f"Status code: {response.status_code}")
-
-    data = response.json()
-    print(
-        f"Performing request to Weather API for city {CITY}...\n"
-        f"{data['location']['name']}/{data['location']['country']}, "
-        f"{data['current']['last_updated']} "
-        f"Weather: {data['current']['temp_c']} Celsius, "
-        f"{data['current']['condition']['text']}."
-    )
 
 
 if __name__ == "__main__":
