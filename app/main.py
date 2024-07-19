@@ -16,7 +16,7 @@ def get_weather() -> None:
         }
     )
 
-    if response:
+    if response.status_code == 200:
         data = response.json()
         print(
             f"Performing request to Weather API for city {CITY}...\n"
