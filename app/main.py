@@ -25,7 +25,7 @@ if __name__ == "__main__":
     try:
         current_data = get_weather(api_key, city)
 
-        print(f"Current weather in {city}:")
+        print(f"Current weather in {city}: ")
         print(f"Temperature: {current_data['current']['temp_c']}°C")
         print(f"Humidity: {current_data['current']['humidity']}%")
         print(f"Wind speed: {current_data['current']['wind_kph']} km/hour")
