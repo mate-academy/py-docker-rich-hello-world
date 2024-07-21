@@ -25,13 +25,13 @@ if __name__ == "__main__":
     try:
         current_data = get_weather(api_key, city)
 
-        print(f"Current weather in {city}: ")
-        print(f"Temperature: {current_data['current']['temp_c']}°C")
-        print(f"Humidity: {current_data['current']['humidity']}%")
-        print(f"Wind speed: {current_data['current']['wind_kph']} km/hour")
-        print(f"Cloud: {current_data['current']['cloud']}")
-        print(f"UV: {current_data['current']['uv']}")
-        print(f"Last update: {current_data['current']['last_updated']} "
+        print(f"Current weather in {city}: \n"
+              f"Temperature: {current_data['current']['temp_c']}°C\n"
+              f"Humidity: {current_data['current']['humidity']}%\n"
+              f"Wind speed: {current_data['current']['wind_kph']} km/hour\n"
+              f"Cloud: {current_data['current']['cloud']}\n"
+              f"UV: {current_data['current']['uv']}\n"
+              f"Last update: {current_data['current']['last_updated']} \n"
               f"by localtime")
 
     except Exception as e:
