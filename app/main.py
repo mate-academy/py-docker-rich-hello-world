@@ -10,6 +10,7 @@ API_KEY = os.environ.get("API_KEY")
 def get_weather() -> None:
     url = f"{URL}?key={API_KEY}&q={CITY}"
     response = requests.get(url).json()
+    print(response)
 
     city = response["location"]["name"]
     country = response["location"]["country"]
