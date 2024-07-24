@@ -23,9 +23,9 @@ def get_weather() -> None:
         weather_condition_1st_line = (
             f"Performing request to weather API for city {city}...")
         weather_condition_2nd_line = (
-             f"{city}/{country} {current_time} "
-             f"Weather: {temp_celsius} "
-             f"Celsius, {current_weather}"
+            f"{city}/{country} {current_time} "
+            f"Weather: {temp_celsius} "
+            f"Celsius, {current_weather}"
         )
 
         print(weather_condition_1st_line)
