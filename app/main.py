@@ -5,10 +5,10 @@ load_dotenv()
 
 
 def get_weather() -> None:
-    key = os.getenv("KEY")
-    url = "http://api.weatherapi.com/v1/current.json"
-    response = requests.get(url, params={
-        "key": key,
+    KEY = os.getenv("KEY")
+    URL = "http://api.weatherapi.com/v1/current.json"
+    response = requests.get(URL, params={
+        "key": KEY,
         "q": "Paris"
     })
 
