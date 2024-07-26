@@ -1,5 +1,8 @@
-venv
-Dockerfile
-__pycashe__/
-__pypackages__/
+.idea/
+.vscode/
+*.iml
 .env
+.DS_Store
+venv/
+.pytest_cache/
+**__pycache__/
