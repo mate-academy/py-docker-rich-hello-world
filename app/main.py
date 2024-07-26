@@ -22,7 +22,8 @@ def get_weather() -> None:
         temperature = data["current"]["temp_c"]
         description = data["current"]["condition"]["text"]
         print(
-            f"{country}/{city} {date} Weather: {temperature} Celsius, {description}"
+            f"{country}/{city} {date}"
+            f"Weather: {temperature} Celsius, {description}"
         )
 
     else:
