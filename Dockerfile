@@ -1,4 +1,4 @@
-FROM python:3.11.6-alpine3.18
+FROM python:3.10.8-slim
 LABEL maintailer="igor2tak2212@gmail.com"
 
 ENV PYTHOUNNBUFERED 1
