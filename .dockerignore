@@ -1,2 +1,5 @@
 venv
 Dockerfile
+__pycashe__/
+__pypackages__/
+.env
