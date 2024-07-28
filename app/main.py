@@ -1,4 +1,4 @@
-import requests, json
+import requests
 import os
 from dotenv import load_dotenv
 
@@ -16,8 +16,8 @@ def get_weather() -> None:
         data = result.json()
         location = data["location"]
         current_data = data["current"]
-        current_weather = (f"{location['name']}/"
-                           f"{location['country']} {current_data['last_updated']} "
+        current_weather = (f"{location['name']}/{location['country']} "
+                           f"{current_data['last_updated']} "
                            f"Weather: {current_data['temp_c']} Celsius, "
                            f"{current_data['condition']['text']}")
         print(current_weather)
