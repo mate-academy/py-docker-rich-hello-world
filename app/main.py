@@ -9,7 +9,7 @@ def get_weather() -> None:
         raise ValueError("You need to set API_KEY environment variable")
     print("Performing request to weather api for city Paris....")
     res = requests.get(
-        f"https://api.weatherapi.com/v1/current.json",
+        "https://api.weatherapi.com/v1/current.json",
         params={"key": api_key, "q": "Paris", "aqi": "no"}
     )
     if res.status_code == 200:
