@@ -6,12 +6,12 @@ import os
 
 
 def get_weather() -> None:
-    API_KEY = os.getenv('API_KEY')
-    if not API_KEY:
+    api_key = os.getenv("API_KEY")
+    if not api_key:
         raise ValueError("You need to set API_KEY environment variable")
     res = requests.get(
         f"http://api.weatherapi.com/v1/current.json?"
-        f"key={API_KEY}&q=Paris&aqi=no"
+        f"key={api_key}&q=Paris&aqi=no"
     )
     content = json.loads(res.content)
     print("Performing request to weather api for city Paris....")
