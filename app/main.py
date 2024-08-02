@@ -20,8 +20,8 @@ def get_weather() -> dict[str, str] | Any:
         temperature = data["current"]["temp_c"]
         sky = data["current"]["condition"]["text"]
 
-        print(f"Performing request to Weather API for city {city}...")
-        print(f"{city}/{country} {date} Weather: {temperature}, {sky}")
+        print(f"Performing request to Weather API for city {city}...\n"
+              f"{city}/{country} {date} Weather: {temperature}, {sky}")
         return data
     else:
         return {"error": f"{city} not found"}
