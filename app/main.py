@@ -2,7 +2,7 @@ import os
 import requests
 
 
-def get_weather(api_key: None, city="Paris") -> None:
+def get_weather(api_key: None, city: str = "Paris") -> None:
     url = (
         f"http://api.weathe"
         f"rapi.com/v1/current.json?key={api_key}&q={city}"
