@@ -16,12 +16,9 @@ def get_weather() -> None:
         weather = response.json()
 
         print(
-            f"Paris/France",
-            f"{weather["current"]["last_updated"]} "
-            f"Weather: "
-            f"{weather['current']['temp_c']} "
-            f"Celsius, "
-            f"{weather["current"]["condition"]["text"]}"
+            f"Paris/France {weather['current']['last_updated']} "
+            f"Weather: {weather['current']['temp_c']} "
+            f"Celsius, {weather['current']['condition']['text']}"
         )
 
 
