@@ -13,7 +13,7 @@ def get_weather():
     response = requests.get(
         f"{BASE_URL}?key={KEY}&q={CITY}",
     )
-    print(response.json())
+    return print(response.json())
 
 
 if __name__ == "__main__":
