@@ -13,7 +13,19 @@ def get_weather() -> None:
     response = requests.get(
         f"{BASE_URL}?key={KEY}&q={CITY}",
     )
-    return print(response.json())
+
+    data = response.json()
+    city = data["location"]["name"]
+    country = data["location"]["country"]
+    current_data = data["location"]["localtime"]
+    temperature = data["current"]["temp_c"]
+    weather = data["current"]["condition"]["text"]
+    print(
+        f"{city}/{country} "
+        f"{current_data} "
+        f"Weather: {temperature} Celsius, "
+        f"{weather}"
+    )
 
 
 if __name__ == "__main__":
