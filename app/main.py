@@ -9,7 +9,7 @@ BASE_URL = "http://api.weatherapi.com/v1/current.json"
 CITY = "London"
 
 
-def get_weather():
+def get_weather() -> None:
     response = requests.get(
         f"{BASE_URL}?key={KEY}&q={CITY}",
     )
