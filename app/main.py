@@ -11,7 +11,9 @@ def get_weather(api_key: str) -> None:
     response = requests.get(url)
     data = response.json()
     if response.status_code == 200:
-        print(f"Current weather in Paris: {data['current']['condition']['text']}, {data['current']['temp_c']}°C")
+        print(f"Current weather in Paris: "
+              f"{data['current']['condition']['text']}, "
+              f"{data['current']['temp_c']}°C")
     else:
         print(f"Error: {data['error']['message']}")
 
