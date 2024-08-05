@@ -18,7 +18,8 @@ def get_weather() -> None:
         current_time = data["location"]["localtime"]
         temp = data["current"]["temp_c"]
         weather = data["current"]["condition"]["text"]
-        print(f"{city}/{country} {current_time} Weather: {temp} Celsius, {weather}")
+        print(f"{city}/{country} {current_time} "
+              f"Weather: {temp} Celsius, {weather}")
     else:
         error_message = (
             response.json().get("error", {})
