@@ -15,5 +15,6 @@ def get_weather() -> None:
     )
     return print(response.json())
 
+
 if __name__ == "__main__":
     get_weather()
