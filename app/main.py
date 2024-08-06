@@ -10,6 +10,10 @@ API_KEY = os.environ.get("API_KEY")
 
 
 def get_weather() -> None:
+    params = {
+        "key": API_KEY,
+        "q": "Paris",
+    }
     try:
         response = requests.get(BASE_URL, params=params)
         response.raise_for_status()  # Raise an HTTPError for bad responses
