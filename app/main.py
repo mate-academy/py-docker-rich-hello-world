@@ -12,17 +12,29 @@ params = {"key": API_KEY, "q": "Paris"}
 
 
 def get_weather() -> None:
-    res = requests.get(BASE_URL, params=params)
-    data = json.loads(res.text)
-    location_name = data["location"]["name"]
-    location_country = data["location"]["country"]
-    localtime = data["location"]["localtime"]
-    temp_c = data["current"]["temp_c"]
-    condition_text = data["current"]["condition"]["text"]
+    try:
+        res = requests.get(BASE_URL, params=params)
+        res.raise_for_status()
+        data = res.json()
 
-    print(f"{location_name}/{location_country}")
-    print(f"{localtime}")
-    print(f"Weather: {temp_c} Celsius, {condition_text}")
+        location_name = data["location"]["name"]
+        location_country = data["location"]["country"]
+        localtime = data["location"]["localtime"]
+        temp_c = data["current"]["temp_c"]
+        condition_text = data["current"]["condition"]["text"]
+
+        print(f"{location_name}/{location_country}")
+        print(f"{localtime}")
+        print(f"Weather: {temp_c} Celsius, {condition_text}")
+
+    except requests.RequestException as e:
+        print(f"Network or HTTP error occurred: {e}")
+    except json.JSONDecodeError:
+        print("Error decoding JSON response.")
+    except KeyError as e:
+        print(f"Missing expected key in the response: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 
 if __name__ == "__main__":
