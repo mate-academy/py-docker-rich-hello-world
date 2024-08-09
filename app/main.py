@@ -16,7 +16,7 @@ def get_weather() -> None:
         print(f"{FILTERING}, weather: {temp} Celsius, {cond}")
 
     else:
-        return None
+        print("Something went wrong, check your API key")
 
 
 if __name__ == "__main__":
