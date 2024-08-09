@@ -9,10 +9,11 @@ def get_weather() -> None:
     api_key = os.getenv("API_KEY")
     request = requests.get(URL + f"key={api_key}&q={FILTERING}").json()
 
-    temp = request["current"]["temp_c"]
-    cond = request["current"]["condition"]["text"]
+    if request.status_code == 200:
+        temp = request["current"]["temp_c"]
+        cond = request["current"]["condition"]["text"]
 
-    print(f"{FILTERING}, weather: {temp} Celsius, {cond}")
+        print(f"{FILTERING}, weather: {temp} Celsius, {cond}")
 
 
 if __name__ == "__main__":
