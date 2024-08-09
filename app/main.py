@@ -15,6 +15,9 @@ def get_weather() -> None:
 
         print(f"{FILTERING}, weather: {temp} Celsius, {cond}")
 
+    else:
+        return None
+
 
 if __name__ == "__main__":
     get_weather()
