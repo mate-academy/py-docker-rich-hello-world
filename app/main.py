@@ -1,6 +1,7 @@
+import os
+
 import requests
 from dotenv import load_dotenv
-import os
 
 API_KEY = os.getenv("WEATHER_API_KEY")
 URL = "http://api.weatherapi.com/v1/current.json"
