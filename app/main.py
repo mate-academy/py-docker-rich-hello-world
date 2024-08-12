@@ -12,15 +12,17 @@ FILTERING = "q=Paris"
 
 
 def get_weather() -> None:
-    result = requests.get(URL + "?" + FILTERING, params={"key": KEY_API})
-    data = result.json()
-
-    location = f'{data["location"]["name"]} {data["location"]["country"]}'
-    weather = (f'{data["current"]["temp_c"]}, '
-               f'{data["current"]["condition"]["text"]}')
-    localtime = data["location"]["localtime"]
-    print(f"Weather in: {location}, \n"
-          f"Time: {localtime}. Temperature now: {weather}")
+    try:
+        result = requests.get(URL + "?" + FILTERING, params={"key": KEY_API})
+        data = result.json()
+        location = f'{data["location"]["name"]} {data["location"]["country"]}'
+        weather = (f'{data["current"]["temp_c"]}, '
+                   f'{data["current"]["condition"]["text"]}')
+        localtime = data["location"]["localtime"]
+        print(f"Weather in: {location}, \n"
+              f"Time: {localtime}. Temperature now: {weather}")
+    except requests.exceptions.ConnectionError:
+        print("Something went wrong, please try again later.")
 
 
 if __name__ == "__main__":
