@@ -2,7 +2,11 @@
 .vscode/
 *.iml
 .env
+env/
 .DS_Store
 venv/
 .pytest_cache/
 **__pycache__/
+constant.env
+.constant.env
+.dockerignore
