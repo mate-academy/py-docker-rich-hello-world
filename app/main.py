@@ -4,16 +4,16 @@ import requests
 
 
 URL = "http://api.weatherapi.com/v1/current.json"
+KEY = os.getenv("API_KEY")
 
 
 def get_weather() -> None:
-    key = os.getenv("API_KEY")
-    if not key:
+    if not KEY:
         print("API_KEY environment variable not set")
         return
     params = {
         "q": "Paris",
-        "key": key,
+        "key": KEY,
         "aqi": "no"
     }
     response = requests.get(URL, params=params)
@@ -25,6 +25,7 @@ def get_weather() -> None:
         print(f"Weather: {weather_data['current']['condition']['text']}")
     else:
         print("Failed to get weather data")
+
 
 if __name__ == "__main__":
     get_weather()
