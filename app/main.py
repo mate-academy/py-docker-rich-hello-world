@@ -14,6 +14,7 @@ def get_weather() -> None:
     url = f"https://api.weatherapi.com/v1/current.json?key={api_key}&q={city}"
     response = requests.get(url)
     try:
+        response.raise_for_status()
         weather = response.json()
         print(
             f"Weather in {weather['current']['last_updated']} {city}: "
