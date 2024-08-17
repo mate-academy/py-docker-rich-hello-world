@@ -20,9 +20,11 @@ def get_weather() -> None:
 
     try:
         weather_data = response.json()
-        print(f"Current weather in {weather_data['location']['name']}:\n",
-        f"Temperature: {weather_data['current']['temp_c']}°C\n",
-        f"Weather: {weather_data['current']['condition']['text']}\n")
+        print(
+            f"Current weather in {weather_data['location']['name']}:\n",
+            f"Temperature: {weather_data['current']['temp_c']}°C\n",
+            f"Weather: {weather_data['current']['condition']['text']}\n"
+        )
     except ValueError:
         print("ERROR: Connection failed.")
 
