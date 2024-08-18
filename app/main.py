@@ -3,18 +3,16 @@ import os
 
 
 def get_weather() -> None:
-    api_key = os.getenv("API_KEY")
-    url = "http://api.weatherapi.com/v1/current.json"
-    key = api_key
-    default_city = "Kyiv"
+    KEY = os.getenv("API_KEY")
+    URL = "http://api.weatherapi.com/v1/current.json"
 
     try:
         params = {
-            "q": default_city,
-            "key": key,
+            "q": "Kyiv",
+            "key": KEY,
             "aqi": "no"
         }
-        response = requests.get(url, params=params)
+        response = requests.get(URL, params=params)
     except ValueError:
         print("ERROR: API_KEY is not correct or invalid.")
 
