@@ -5,6 +5,7 @@ import os
 KEY = os.getenv("API_KEY")
 URL = "http://api.weatherapi.com/v1/current.json"
 
+
 def get_weather() -> None:
     try:
         params = {
