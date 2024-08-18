@@ -2,10 +2,10 @@ import requests
 import os
 
 
-def get_weather() -> None:
-    KEY = os.getenv("API_KEY")
-    URL = "http://api.weatherapi.com/v1/current.json"
+KEY = os.getenv("API_KEY")
+URL = "http://api.weatherapi.com/v1/current.json"
 
+def get_weather() -> None:
     try:
         params = {
             "q": "Kyiv",
