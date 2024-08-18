@@ -14,11 +14,11 @@ def get_weather() -> None:
     url = f"https://api.weatherapi.com/v1/current.json?key={api_key}&q={city}"
     response = requests.get(url)
     try:
-        response.raise_for_status()
+        response.status_code == 200
         weather = response.json()
         print(
             f"Weather in {weather['current']['last_updated']} {city}: "
-            f"{weather['current']['temp_c']}C, "
+            f"{weather['current']['temp_c']}˚C, "
             f"{weather['current']['condition']['text']}"
         )
     except requests.exceptions.ConnectionError:
