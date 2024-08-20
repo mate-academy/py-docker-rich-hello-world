@@ -2,14 +2,19 @@ import os
 
 import requests
 
-API_KEY = os.getenv("API_KEY")  # use your API on Weather API
+API_KEY = os.getenv("API_KEY")
 
 
 def get_weather() -> None:
     city = input("Enter city name: ")
-    url = f"https://api.weatherapi.com/v1/current.json?key={API_KEY}&q={city}"
+    url = "https://api.weatherapi.com/v1/current.json"
 
-    response = requests.get(url)
+    params = {
+        "key": API_KEY,
+        "q": city
+    }
+
+    response = requests.get(url, params=params)
     if response.status_code == 200:
         data = response.json()
         print(f"City: {data.get('location').get('name')}")
@@ -19,7 +24,7 @@ def get_weather() -> None:
         print(f"Temperature: {data.get('current').get('temp_c')}")
         print(f"Feels like: {data['current']['feelslike_c']}")
     else:
-        print(f"Please, enter valid location")
+        print("Please, enter valid location")
 
 
 if __name__ == "__main__":
