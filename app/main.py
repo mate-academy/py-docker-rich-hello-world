@@ -31,7 +31,8 @@ def get_weather() -> None:
                    f"Celsius, {data_paris['current']['condition']['text']}")
         print(f"{title_request} \n{location} {local_time} {weather}")
     else:
-        print(f"Failed to retrieve data: {result.status_code}\nResponse: {result.text}")
+        print(f"Failed to retrieve data: {result.status_code}\n"
+              f"Response: {result.text}")
 
 
 if __name__ == "__main__":
