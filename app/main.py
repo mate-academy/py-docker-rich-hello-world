@@ -13,7 +13,6 @@ FILTER = "Paris"
 
 def get_weather() -> None:
 
-
     title_request = "Performing request to Weather API for city Paris..."
     result = requests.get(URL + FILTER)
     data_paris = result.json()
