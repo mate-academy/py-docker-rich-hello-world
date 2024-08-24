@@ -6,23 +6,34 @@ API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     raise ValueError("API_KEY environment variable is not set.")
 
-URL = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q="
+URL = "http://api.weatherapi.com/v1/current.json"
 
-FILTER = "Paris"
+CITY = "Paris"
 
 
 def get_weather() -> None:
 
-    title_request = "Performing request to Weather API for city Paris..."
-    result = requests.get(URL + FILTER)
-    data_paris = result.json()
-    location = (f"{data_paris['location']['name']}/"
-                f"{data_paris['location']['country']}")
-    local_time = f"{data_paris['location']['localtime']}"
-    weather = (f" Weather: {data_paris['current']['temp_c']} "
-               f"Celsius, {data_paris['current']['condition']['text']}")
-    print(title_request)
-    print(location + local_time + weather)
+    params = {
+        "key": API_KEY,
+        "q": CITY
+    }
+
+    title_request = f"Performing request to Weather API for city {CITY}..."
+
+    result = requests.get(URL, params=params)
+
+    if result.status_code == 200:
+        data_paris = result.json()
+        location = (f"{data_paris['location']['name']}/"
+                    f"{data_paris['location']['country']}")
+        local_time = f"{data_paris['location']['localtime']}"
+        weather = (f" Weather: {data_paris['current']['temp_c']} "
+                   f"Celsius, {data_paris['current']['condition']['text']}")
+        print(title_request)
+        print(location + local_time + weather)
+    else:
+        print(f"Failed to retrieve data: {result.status_code}")
+        print(f"Response: {result.text}")
 
 
 if __name__ == "__main__":
