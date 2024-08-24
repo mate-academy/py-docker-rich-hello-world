@@ -31,7 +31,7 @@ def get_weather() -> None:
         current_weather = result["current"]
 
         city_and_country = (
-            f"{location_data["name"]}/{location_data["country"]}"
+            f"{location_data['name']}/{location_data['country']}"
         )
         date_and_time = location_data["localtime"]
 
