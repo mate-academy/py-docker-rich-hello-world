@@ -22,5 +22,6 @@ def get_weather() -> None:
     except requests.RequestException as e:
         print(f"Error getting data: {e}")
 
+
 if __name__ == "__main__":
     get_weather()
