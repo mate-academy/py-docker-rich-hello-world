@@ -27,7 +27,9 @@ def get_weather() -> None:
         temp_celsius = data["current"]["temp_c"]
         condition = data["current"]["condition"]["text"]
 
-        print(f"{city} {current_time} Weather: {temp_celsius} Celsius, {condition}")
+        print(f"{city} {current_time} "
+              f"Weather: {temp_celsius} "
+              f"Celsius, {condition}")
     else:
         print("Failed to retrieve weather data")
 
