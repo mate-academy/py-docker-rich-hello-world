@@ -28,7 +28,8 @@ def get_weather() -> None:
         temperature = data["current"]["temp_c"]
         condition = data["current"]["condition"]["text"]
 
-        print(f"{city}/{country} {date_time} Weather: {temperature} Celsius, {condition}")
+        print(f"{city}/{country} {date_time} Weather: "
+              f"{temperature} Celsius, {condition}")
 
 
 if __name__ == "__main__":
