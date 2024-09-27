@@ -1,10 +1,11 @@
 import os
 from datetime import datetime
+from typing import Any
 
 import requests
 
 
-def get_weather():
+def get_weather() -> None:
     api_key = os.getenv("API_KEY")
 
     if not api_key:
@@ -33,7 +34,6 @@ def get_weather():
               f"Celsius, {condition}")
     else:
         print(f"{response.status_code} {response.text}")
-
 
 
 if __name__ == "__main__":
