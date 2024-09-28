@@ -13,13 +13,15 @@ def get_weather() -> None:
             "Please set the API_KEY environment variable."
         )
 
-    base_url = "https://api.weatherapi.com/v1"
-    method = "current.json"
+    url = "https://api.weatherapi.com/v1/current.json"
     location = "Paris"
 
-    url = f"{base_url}/{method}?q={location}&key={api_key}"
+    params = {
+        "key": api_key,
+        "q": location,
+    }
 
-    response = requests.get(url)
+    response = requests.get(url, params=params)
 
     print(f"Performing request to Weather API for city {location}")
     if response.status_code == 200:
