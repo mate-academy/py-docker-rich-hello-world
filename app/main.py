@@ -14,22 +14,21 @@ def get_weather() -> None:
     if not API_KEY:
         raise ValueError("API_KEY environment variable not set or empty")
 
-    params = {
-            "key": API_KEY,
-            "q": CITY
-        }
+    params = {"key": API_KEY, "q": CITY}
 
     response = requests.get(URL, params=params)
 
     if response.status_code == 200:
         weather_data = response.json()
 
-        city = weather_data['location']['name']
-        temp_c = weather_data['current']['temp_c']
-        condition = weather_data['current']['condition']['text']
+        city = weather_data["location"]["name"]
+        temp_c = weather_data["current"]["temp_c"]
+        condition = weather_data["current"]["condition"]["text"]
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-        print(f"The weather in {city} {current_time}: {temp_c}°C, {condition}.")
+        print(
+            f"The weather in {city} {current_time}: {temp_c}°C, {condition}."
+        )
 
     else:
         print(response.status_code, response.text)
