@@ -1,7 +1,13 @@
-# .dockerignore
 __pycache__
 *.pyc
 *.pyo
 *.pyd
 *.db
 .env
+.venv
+Dockerfile
+README.md
+checklist.md
+.github
+result.png.venv
+result.png
