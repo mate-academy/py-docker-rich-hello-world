@@ -11,12 +11,12 @@ def get_weather() -> None:
         print("API_KEY not found in environment variables.")
         return
 
-    CITY = "Paris"
-    URL = (
+    city = "Paris"
+    url = (
         f"http://api.weatherapi.com/v1/current.json?"
-        f"key={api_key}&q={CITY}&aqi=yes"
+        f"key={api_key}&q={city}&aqi=yes"
     )
-    response = requests.get(URL)
+    response = requests.get(url)
 
     if response.status_code == 200:
         data = response.json()
