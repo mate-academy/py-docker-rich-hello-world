@@ -2,7 +2,7 @@ import os
 import requests
 
 
-def get_weather(api_key) -> None:
+def get_weather(api_key: str) -> None:
     # write your code here
     city = "Warsaw"
     url = f"https://api.weatherapi.com/v1/current.json?key={api_key}&q={city}"
@@ -14,7 +14,6 @@ def get_weather(api_key) -> None:
     condition = data["current"]["condition"]["text"]
 
     print(f"Temperature in the {city}: {temp_c}, weather: {condition}")
-
 
 
 if __name__ == "__main__":
