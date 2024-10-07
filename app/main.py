@@ -27,9 +27,9 @@ def get_weather() -> None:
             data = response.json()
             print("Performing request to Weather API for city Paris...")
             print(
-                f"Paris/France {data["location"]["localtime"]} Weather: "
-                f"{data["current"]["temp_c"]} Celsius, "
-                f"{data["current"]["condition"]["text"]}"
+                f"Paris/France {data['location']['localtime']} Weather: "
+                f"{data['current']['temp_c']} Celsius, "
+                f"{data['current']['condition']['text']}"
             )
         except requests.exceptions.JSONDecodeError:
             print("Failed to decode JSON, response text:", response.text)
