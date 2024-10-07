@@ -24,7 +24,7 @@ def get_weather() -> None:
         condition = weather_data["current"]["condition"]["text"]
         localtime = weather_data["location"]["localtime"]
 
-        localtime= datetime.strptime(localtime, "%Y-%m-%d %H:%M")
+        localtime = datetime.strptime(localtime, "%Y-%m-%d %H:%M")
         formatted_time = localtime.strftime("%Y-%m-%d %H:%M")
 
         print(f"Performing request to Weather API for city {location}...")
