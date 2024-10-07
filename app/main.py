@@ -9,6 +9,7 @@ if not API_KEY:
 URL = "https://api.weatherapi.com/v1/current.json"
 CITY = "Paris"
 
+
 def get_weather() -> None:
     """Fetch and display the current weather for the specified city."""
     try:
@@ -26,7 +27,7 @@ def get_weather() -> None:
             temperature = current_weather.get("temp_c")
             condition = current_weather.get("condition", {}).get("text", "N/A")
 
-            print(f"Weather update for {CITY}, {country}:\n"
+            print(f"Weather update for {CITY}, {country}: \n"
                   f"Local Time: {local_time}\n"
                   f"Temperature: {temperature} °C\n"
                   f"Condition: {condition}")
