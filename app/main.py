@@ -20,9 +20,9 @@ def get_weather() -> None:
 
     if response.status_code == 200:
         weather_data = response.json()
-        print(f"Weather in {weather_data['location']['name']}:")
-        print(f"Temperature: {weather_data['current']['temp_c']}°C")
-        print(f"Weather: {weather_data['current']['condition']['text']}")
+        print(f"Weather in {weather_data['location']['name']}: "
+              f"Temperature: {weather_data['current']['temp_c']}°C,"
+              f" Weather: {weather_data['current']['condition']['text']}")
     else:
         print("Failed to get weather data")
 
