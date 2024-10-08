@@ -23,7 +23,8 @@ def get_weather() -> None:
 
         print(
             f"Performing request to weather API for city {city}...\n"
-            f"{city}/{country} {localtime} Weather: {temp_c} Celsius, {condition}"
+            f"{city}/{country} {localtime}"
+            f" Weather: {temp_c} Celsius, {condition}"
         )
     else:
         print(f"Error: {result_weather.status_code}")
