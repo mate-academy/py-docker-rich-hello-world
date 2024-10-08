@@ -35,8 +35,9 @@ def print_weather_info(data: dict) -> None:
     )
     print(f"Temperature: {current['temp_c']}°C")
     print(f"Condition: {current['condition']['text']}")
-    print(f"Wind: {current['wind_kph']} kph from the "
-          f"{current['wind_dir']}")
+    print(
+        f"Wind: {current['wind_kph']} kph from the " f"{current['wind_dir']}"
+    )
     print(f"Humidity: {current['humidity']}%")
     print(f"Last updated: {current['last_updated']}")
 
