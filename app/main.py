@@ -15,13 +15,15 @@ def get_weather(api_key: str) -> None:
     response = requests.get(API_URL, params=params)
     if response.status_code == 200:
         data = response.json()
-        location = data['location']
-        current = data['current']
+        location_time = data["location"]["localtime"]
+        temperature = data["current"]["temp_c"]
+        condition_text = data["current"]["condition"]["text"]
+        location = data["location"]["name"]
+        country = data["location"]["country"]
         print(
-            f"{location['name']}/{location['country']} "
-            f"{location['localtime']} "
-            f"Weather: {current['temp_c']}° Celsius, "
-            f"{current['condition']['text']}"
+            f"{location}/{country} {location_time} Weather: "
+            f"{temperature} Celsius, "
+            f"{condition_text}"
         )
     else:
         print("Error:", response.status_code, response.text)
