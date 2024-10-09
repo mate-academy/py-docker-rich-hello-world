@@ -10,16 +10,18 @@ CITY = "Paris"
 
 
 def get_weather() -> None:
-    API_KEY = os.getenv('API_KEY')
-    if not API_KEY:
+    api_key = os.getenv("API_KEY")
+    if not api_key:
         raise ValueError("No API key found in environment variables")
 
-    url = BASE_URL + f"key={API_KEY}&q={CITY}"
+    url = BASE_URL + f"key={api_key}&q={CITY}"
     response = requests.get(url).json()
-    current_time = dt.now().strftime('%Y-%m-%d %H:%M')
+    current_time = dt.now().strftime("%Y-%m-%d %H:%M")
 
-    location = f"{response['location']['name']}/{response['location']['country']}"
-    weather = f"Weather: {response['current']['temp_c']} Celsius {response['current']['condition']['text']}"
+    location = (f'{response["location"]["name"]}'
+                f'/{response["location"]["country"]}')
+    weather = (f'Weather: {response["current"]["temp_c"]} Celsius '
+               f'{response["current"]["condition"]["text"]}')
 
     print(f"{location} {current_time} {weather}")
 
