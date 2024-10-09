@@ -1,0 +1,12 @@
+.venv
+README.md
+app/.env
+result.png
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+checklist.md
+.github
+.gitignore
+.flake8
