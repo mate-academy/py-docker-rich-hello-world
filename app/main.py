@@ -1,21 +1,36 @@
 import os
+from datetime import datetime as dt
+
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BASE_URL = "https://api.weatherapi.com/v1/current.json?"
+CITY = "Paris"
 
 
-def get_weather(api_key: str) -> None:
-    base_url = "http://api.weatherapi.com/v1/current.json?"
-    location = "Paris"
-    params = f"key={api_key}&q={location}"
+def get_weather() -> None:
+    api_key = os.getenv("API_KEY")
+    if not api_key:
+        raise ValueError("No API key found in environment variables")
 
-    url = base_url + params
+    url = BASE_URL + f"key={api_key}&q={CITY}"
+
     response = requests.get(url)
+
     if response.status_code == 200:
         data = response.json()
-        print(f"Current weather in Paris: {data['current']['temp_c']}°C")
+        current_time = dt.now().strftime("%Y-%m-%d %H:%M")
+
+        location = f"{data['location']['name']}/{data['location']['country']}"
+
+        weather = (f"Weather: {data['current']['temp_c']} °C "
+                   f"{data['current']['condition']['text']}")
+        print(f"{location} {current_time} {weather}")
     else:
-        print("Failed to get weather data", response.status_code)
+        print(f"Failed to get data. Status code: {response.status_code}")
 
 
 if __name__ == "__main__":
-    api_key = os.getenv("API_KEY")
-    get_weather(api_key)
+    get_weather()
