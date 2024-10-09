@@ -2,7 +2,7 @@ import os
 import requests
 
 
-def get_weather(api_key) -> None:
+def get_weather(api_key: str) -> None:
     base_url = "http://api.weatherapi.com/v1/current.json?"
     location = "Paris"
     params = f"key={api_key}&q={location}"
