@@ -13,7 +13,7 @@ def get_weather() -> None:
         params={"q": "Paris", "key": key},
     )
     print(
-        f"Actual temperature in Paris: {response.json()["current"]["temp_c"]}"
+        f"Actual temperature in Paris: {response.json()['current']['temp_c']}"
     )
 
 
