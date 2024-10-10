@@ -4,7 +4,6 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-CITY_NAME = "Paris"
 URL = "http://api.weatherapi.com/v1/current.json"
 
 
@@ -13,11 +12,22 @@ def get_weather() -> None:
 
     params = {
         "key": api_key,
-        "q": CITY_NAME
+        "q": os.getenv("CITY_NAME")
     }
 
-    response = requests.get(URL, params=params)
-    weather_data = response.json()
+    try:
+        response = requests.get(URL, params=params)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        print(e)
+        return
+
+    try:
+        weather_data = response.json()
+    except ValueError as e:
+        print(e)
+        return
+
     pprint(weather_data)
 
 
