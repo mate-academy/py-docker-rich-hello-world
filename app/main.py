@@ -3,7 +3,12 @@ import requests
 
 API_KEY = os.environ["API_KEY"]
 
-URL = f"http://api.openweathermap.org/data/2.5/weather?q=Paris&appid={API_KEY}&units=metric"
+URL = (
+    f"http://api.openweathermap.org/data/2.5/weather"
+    f"?q=Paris"
+    f"&appid={API_KEY}"
+    f"&units=metric"
+)
 
 
 def get_weather() -> None:
