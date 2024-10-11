@@ -14,8 +14,6 @@ def get_weather() -> str:
     payload = {"key": API_KEY, "q": CITY}
     get_weather_url = BASE_URL + "current.json"
     response = requests.get(get_weather_url, params=payload)
-    print(payload)
-    print(get_weather_url)
     if response.status_code == 200:
         data = response.json()
         print(f"{data['location']['name']}/{data['location']['country']} "
