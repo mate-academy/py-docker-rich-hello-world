@@ -17,13 +17,15 @@ def get_weather() -> None:
         country = result.json()["location"]["country"]
         date_time = result.json()["location"]["localtime"]
         temp = result.json()["current"]["temp_c"]
-        weather = result.json()["current"]["condition"]["text"]
+        info = result.json()["current"]["condition"]["text"]
 
         print(f"Performing request to Weather API for city {city}...")
-        print(f"{city}/{country} {date_time} Weather: {temp} Celsius, {weather}")
+        print(f"{city}/{country} {date_time} Weather: {temp} Celsius, {info}")
+
     else:
         print(f"Temporary problems with connection to Weather API."
               f"{result.status_code}")
+
 
 if __name__ == "__main__":
     get_weather()
