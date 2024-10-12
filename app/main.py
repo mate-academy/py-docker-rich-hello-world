@@ -10,6 +10,7 @@ BASE_URL = "https://api.weatherapi.com/v1/current.json"
 API_KEY = os.getenv("API_KEY")
 CITY = "Paris"
 
+
 def get_weather() -> None:
     if not API_KEY:
         raise ValueError("No API key found in environment variables")
