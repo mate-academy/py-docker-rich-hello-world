@@ -12,16 +12,18 @@ FILTERING = "Paris"
 
 def get_weather() -> None:
     result = requests.get(URL + f"q={FILTERING}&key={API_KEY}")
+    if result.status_code == 200:
+        city = result.json()["location"]["name"]
+        country = result.json()["location"]["country"]
+        date_time = result.json()["location"]["localtime"]
+        temp = result.json()["current"]["temp_c"]
+        weather = result.json()["current"]["condition"]["text"]
 
-    city = result.json()["location"]["name"]
-    country = result.json()["location"]["country"]
-    date_time = result.json()["location"]["localtime"]
-    temp = result.json()["current"]["temp_c"]
-    weather = result.json()["current"]["condition"]["text"]
-
-    print(f"Performing request to Weather API for city {city}...")
-    print(f"{city}/{country} {date_time} Weather: {temp} Celsius, {weather}")
-
+        print(f"Performing request to Weather API for city {city}...")
+        print(f"{city}/{country} {date_time} Weather: {temp} Celsius, {weather}")
+    else:
+        print(f"Temporary problems with connection to Weather API."
+              f"{result.status_code}")
 
 if __name__ == "__main__":
     get_weather()
