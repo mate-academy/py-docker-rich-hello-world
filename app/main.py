@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_URL = "https://api.weatherapi.com/v1/current.json?"
+BASE_URL = "https://api.weatherapi.com/v1/current.json"
+API_KEY_PARAM = "key"
+CITY_PARAM = "q"
 CITY = "Paris"
 
 
@@ -15,7 +17,7 @@ def get_weather() -> None:
     if not api_key:
         raise ValueError("No API key found in environment variables")
 
-    url = BASE_URL + f"key={api_key}&q={CITY}"
+    url = f"{BASE_URL}?{API_KEY_PARAM}={api_key}&{CITY_PARAM}={CITY}"
 
     response = requests.get(url)
 
