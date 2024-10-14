@@ -14,7 +14,7 @@ def get_weather() -> str:
         URL,
         params={"q": city, "key": key},
     )
-    return f"Actual temperature in Paris: {response.json()['current']['temp_c']}"
+    return f"Temperature in Paris: {response.json()['current']['temp_c']}"
 
 
 if __name__ == "__main__":
