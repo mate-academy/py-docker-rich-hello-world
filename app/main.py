@@ -1,11 +1,17 @@
 import requests
 import os
 
+BASE_URL = "http://api.weatherapi.com/v1/current.json"
+city = "Paris"
+
 
 def get_weather(api_key: str) -> None:
-    city = "Paris"
-    base_url = f"http://api.weatherapi.com/v1/current.json?key=" f"{api_key}&q={city}"
-    response = requests.get(base_url)
+    weather_paris_url = f"{BASE_URL}?key={api_key}&q={city}"
+    try:
+        response = requests.get(weather_paris_url)
+    except requests.exceptions.ConnectionError:
+        print("Connection Error")
+
     weather = response.json()
 
     if response.status_code == 200:
