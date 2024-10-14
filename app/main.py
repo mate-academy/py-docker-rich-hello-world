@@ -4,14 +4,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-key = os.getenv("API_KEY")
+KEY = os.getenv("API_KEY")
+URL = "http://api.weatherapi.com/v1/current.json"
+LOCATION = "Paris"
 
 
 def get_weather() -> None:
-    response = requests.get(
-        "http://api.weatherapi.com/v1/current.json",
-        params={"q": "Paris", "key": key}
-    ).json()
+    response = requests.get(URL, params={"q": LOCATION, "key": KEY}).json()
 
     print(f"Current weather in Paris is: "
           f"{response['current']['temp_c']} C, "
