@@ -2,11 +2,10 @@ import requests
 import os
 
 BASE_URL = "http://api.weatherapi.com/v1/current.json"
-city = "Paris"
 
 
-def get_weather(api_key: str) -> None:
-    weather_paris_url = f"{BASE_URL}?key={api_key}&q={city}"
+def get_weather(api_key: str, CITY) -> None:
+    weather_paris_url = f"{BASE_URL}?key={api_key}&q={CITY}"
     try:
         response = requests.get(weather_paris_url)
     except requests.exceptions.ConnectionError:
@@ -23,9 +22,9 @@ def get_weather(api_key: str) -> None:
             f"Celsius, {weather["current"]["condition"]["text"]}"
         )
     else:
-        "There is no data about weather"
+        print("There is no data about weather")
 
 
 if __name__ == "__main__":
     api_key = os.getenv("API_KEY")
-    get_weather(api_key)
+    get_weather(api_key, "Paris")
