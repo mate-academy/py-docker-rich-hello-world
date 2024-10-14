@@ -3,7 +3,7 @@ import requests
 
 API_KEY = os.environ["API_KEY"]
 
-CITY = "Paris"
+CITY = os.environ.get("CITY", "Paris")
 URL = (
     f"http://api.openweathermap.org/data/2.5/weather"
     f"?q={CITY}"
