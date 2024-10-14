@@ -1,7 +1,30 @@
-def get_weather() -> None:
-    # write your code here
-    pass
+import requests
+import os
+
+BASE_URL = "http://api.weatherapi.com/v1/current.json"
+
+
+def get_weather(api_key: str, CITY) -> None:
+    weather_paris_url = f"{BASE_URL}?key={api_key}&q={CITY}"
+    try:
+        response = requests.get(weather_paris_url)
+    except requests.exceptions.ConnectionError:
+        print("Connection Error")
+
+    weather = response.json()
+
+    if response.status_code == 200:
+        print(
+            f"{weather["location"]["name"]}/"
+            f"{weather["location"]["country"]} "
+            f"{weather["location"]["localtime"]} "
+            f"Weather: {weather["current"]["temp_c"]} "
+            f"Celsius, {weather["current"]["condition"]["text"]}"
+        )
+    else:
+        print("There is no data about weather")
 
 
 if __name__ == "__main__":
-    get_weather()
+    api_key = os.getenv("API_KEY")
+    get_weather(api_key, "Paris")
