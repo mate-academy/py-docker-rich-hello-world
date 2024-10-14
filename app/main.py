@@ -6,6 +6,7 @@ load_dotenv()
 
 key = os.getenv("API_KEY")
 
+
 def get_weather() -> None:
     response = requests.get(
         "http://api.weatherapi.com/v1/current.json",
