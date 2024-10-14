@@ -5,18 +5,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 URL = "http://api.weatherapi.com/v1/current.json"
-CITY = "Paris"
+city = "Paris"
 
 
-def get_weather() -> None:
+def get_weather() -> str:
     key = os.getenv("API_KEY")
     response = requests.get(
         URL,
-        params={"q": CITY, "key": key},
+        params={"q": city, "key": key},
     )
-    print(
-        f"Actual temperature in Paris: {response.json()['current']['temp_c']}"
-    )
+    return f"Actual temperature in Paris: {response.json()['current']['temp_c']}"
 
 
 if __name__ == "__main__":
