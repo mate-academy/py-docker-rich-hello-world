@@ -7,13 +7,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 API_KEY = os.environ.get("API_KEY")
-API_URL = f"https://api.weatherapi.com/v1/current.json?key={API_KEY}&q="
+BASE_URL = "https://api.weatherapi.com/v1/current.json"
 CITY = "Paris"
 
 
 def get_weather() -> None:
     try:
-        full_url = f"{API_URL}{CITY}&aqi=no"
+        full_url = f"{BASE_URL}?key={API_KEY}&q={CITY}&aqi=no"
 
         response = requests.get(full_url)
         weather_data = response.json()
