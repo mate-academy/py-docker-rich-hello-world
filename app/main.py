@@ -7,7 +7,7 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 print(api_key)
 
-URL = "http://api.weatherapi.com/v1"
+URL = "https://api.weatherapi.com/v1"
 CITY = "Paris"
 
 
