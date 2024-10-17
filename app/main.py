@@ -4,6 +4,7 @@ import requests
 
 load_dotenv()
 
+# flake8: noqa: N806
 def get_weather() -> None:
     URL = "https://api.weatherapi.com/v1/current.json"
     KEY = os.getenv("WEATHER_API_KEY")
@@ -19,11 +20,12 @@ def get_weather() -> None:
     weather_celsius = response["current"]["temp_c"]
     weather_condition = response["current"]["condition"]["text"]
 
-    date, time = localtime.split(' ')
+    date, time = localtime.split(" ")
 
     result = (f"{city}/{country} {date} {time} "
               f"Weather: {weather_celsius} Celsius, {weather_condition}")
     print(result)
+
 
 if __name__ == "__main__":
     get_weather()
