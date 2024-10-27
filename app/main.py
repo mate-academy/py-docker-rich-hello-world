@@ -20,7 +20,11 @@ def get_weather() -> None:
     }
     response = requests.get(URL, params=params)
 
-    print(response.json())
+    if response.status_code == 200:
+        print(response.json())
+    else:
+        print("Error", response.status_code)
+        print(response.text)
 
 
 if __name__ == "__main__":
