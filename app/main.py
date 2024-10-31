@@ -2,11 +2,12 @@
 import os
 import requests
 
+# Define API base URL as a constant
+WEATHER_API_URL = "http://api.weatherapi.com/v1/current.json"
+
 
 def get_weather(api_key: str) -> None:
-    url = (
-        f"http://api.weatherapi.com/v1/current.json?key={api_key}&q=Paris"
-    )
+    url = f"{WEATHER_API_URL}?key={api_key}&q=Paris"
     response = requests.get(url)
     response.raise_for_status()  # Raises an error for 4xx/5xx status codes
     data = response.json()
