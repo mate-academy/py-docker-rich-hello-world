@@ -1,0 +1,7 @@
+.venv
+.env
+Dockerfile
+result.png
+__pycache__
+*.pyc
+*.pyo
