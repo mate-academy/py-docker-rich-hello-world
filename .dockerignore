@@ -1,0 +1,7 @@
+venv
+.git
+__pycashe__
+*.pyc
+*.pyo
+.DS_Store
+.idea/
