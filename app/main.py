@@ -25,8 +25,8 @@ def get_weather() -> None:
         if location is not None or current is not None:
             print("Performing request to Weather API for city Paris...")
             print(f"{location['name']}/{location['country']} "
-                f"{location['localtime']} Weather: {current['temp_c']} "
-                f"Celsius, {current['condition']['text']}")
+                  f"{location['localtime']} Weather: {current['temp_c']} "
+                  f"Celsius, {current['condition']['text']}")
         else:
             print("Error: Invalid response from Weather API")
             return
