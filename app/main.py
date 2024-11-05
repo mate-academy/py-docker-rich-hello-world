@@ -17,9 +17,9 @@ def get_weather() -> None:
     location = data["location"]
     current = data["current"]
     print("Performing request to Weather API for city Paris...")
-    print(f"{location["name"]}/{location["country"]} \
-          {location["localtime"]} Weather: {current["temp_c"]} \
-            Celsius, {current["condition"]["text"]}")
+    print(f"{location['name']}/{location['country']} "
+          f"{location['localtime']} Weather: {current['temp_c']} Celsius, "
+          f"{current['condition']['text']}")
 
 
 if __name__ == "__main__":
