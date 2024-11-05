@@ -1,8 +1,10 @@
 import os
 import requests
-from dotenv import load_dotenv
-load_dotenv()
 
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 FORMAT = "json"
 URL = "https://api.weatherapi.com/v1/"
