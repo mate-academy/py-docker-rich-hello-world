@@ -22,7 +22,7 @@ def get_weather() -> None:
         data = res.json()
         location = data.get("location")
         current = data.get("current")
-        if location is not None or current is not None:
+        if location is not None and current is not None:
             print("Performing request to Weather API for city Paris...")
             print(f"{location['name']}/{location['country']} "
                   f"{location['localtime']} Weather: {current['temp_c']} "
