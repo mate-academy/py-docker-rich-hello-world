@@ -22,11 +22,11 @@ def get_weather() -> None:
     current = request["current"]
 
     print(
-        f"{location["name"]}/"
-        f"{location["country"]} "
-        f"{location["localtime"]} "
-        f"Weather: {current["temp_c"]} Celsius "
-        f"{current["condition"]["text"]}"
+        f"{location['name']}/"
+        f"{location['country']} "
+        f"{location['localtime']} "
+        f"Weather: {current['temp_c']} Celsius "
+        f"{current['condition']['text']}"
     )
 
 
