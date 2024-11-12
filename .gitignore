@@ -1,8 +1,8 @@
-.idea/
-.vscode/
-*.iml
-.env
+.venv
+.git
+__pycashe__
+*.pyc
+*.pyo
 .DS_Store
-venv/
-.pytest_cache/
-**__pycache__/
+.idea/
+.env
