@@ -1,11 +1,17 @@
-import requests
-from api_key import API_KEY
+import os
 
+import requests
+
+
+API_KEY = os.getenv("API_KEY")
 URL = "http://api.weatherapi.com/v1/current.json"
 FILTERING = "Paris"
 
 
 def get_weather() -> None:
+    if not API_KEY:
+        raise ValueError("API_KEY is not specified")
+
     weather = requests.get(URL + f"?key={API_KEY}" + f"&q={FILTERING}").json()
 
     print(
