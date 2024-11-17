@@ -2,7 +2,7 @@ import os
 import requests
 
 
-API_KEY = os.getenv("WEATHER_API_KEY")
+API_KEY = os.getenv("API_KEY")
 BASE_URL = "http://api.weatherapi.com/v1"
 FILTERING = "Paris"
 
@@ -31,8 +31,10 @@ def get_weather() -> None:
             print("Error: Invalid response from Weather API")
             return
     else:
-        print("Error: WEATHER_API_KEY is not set. \
-                  Please set the environment variable and try again.")
+        print("""
+        Error: WEATHER_API_KEY is not set.
+        Please set the environment variable and try again.
+        """)
         return
 
 
