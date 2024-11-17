@@ -11,8 +11,11 @@ FILTERING = "Paris"
 def get_weather() -> None:
     if not API_KEY:
         raise ValueError("API_KEY is not specified")
+    weather = requests.get(URL + f"?key={API_KEY}" + f"&q={FILTERING}")
 
-    weather = requests.get(URL + f"?key={API_KEY}" + f"&q={FILTERING}").json()
+    if weather.status_code != 200:
+        raise ValueError("Request failed")
+    weather = weather.json()
 
     print(
         f"Performing request to Weather API for city "
