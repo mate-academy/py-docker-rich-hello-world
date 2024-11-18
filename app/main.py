@@ -7,9 +7,9 @@ def get_weather() -> None:
     load_dotenv()
     api_key = os.getenv("API_KEY")
 
-    url = "http://api.weatherapi.com/v1/current.json"
-    params = {"key": api_key, "q": "Paris"}
-    response = requests.get(url, params=params)
+    URL = "http://api.weatherapi.com/v1/current.json"
+    PARAMS = {"key": api_key, "q": "Paris"}
+    response = requests.get(URL, params=PARAMS)
     data = response.json()
 
     print(f"Current weather in {data['location']['name']}:")
