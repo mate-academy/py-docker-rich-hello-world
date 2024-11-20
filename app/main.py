@@ -3,7 +3,7 @@ import requests
 
 # Constants
 BASE_URL = "http://api.weatherapi.com/v1/current.json"
-DEFAULT_CITY = "Kyiv"
+DEFAULT_CITY = "Paris"
 
 
 def get_weather() -> None:
