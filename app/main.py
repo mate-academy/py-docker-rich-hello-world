@@ -8,11 +8,11 @@ def get_weather() -> str:
     )
     r_json = response.json()
     r_str = (
-        f"{r_json["location"]["name"]}"
-        f"/{r_json["location"]["country"]} "
-        f"{r_json["location"]["localtime"]} "
-        f"Weather: {r_json["current"]["temp_c"]} Celsius, "
-        f"{r_json["current"]["condition"]["text"]}"
+        f"{r_json['location']['name']}"
+        f"/{r_json['location']['country']} "
+        f"{r_json['location']['localtime']} "
+        f"Weather: {r_json['current']['temp_c']} Celsius, "
+        f"{r_json['current']['condition']['text']}"
     )
     return r_str
 
