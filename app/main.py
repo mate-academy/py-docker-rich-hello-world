@@ -1,10 +1,14 @@
+import os
 import requests
+
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def get_weather() -> str:
     response = requests.get(
         url="https://api.weatherapi.com/v1/current.json",
-        params={"q": "Paris", "key": "8ba46685a31a4765b9455446242211"}
+        params={"q": "Paris", "key": os.environ.get("API_KEY")}
     )
     r_json = response.json()
     r_str = (
