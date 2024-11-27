@@ -26,9 +26,9 @@ def get_weather() -> None:
 
         print(f"Taking weather information about {CITY} from Weather API")
         print(
-            f"Location: {location["name"]}, {location["country"]}\n"
-            f"Time: {location["localtime"]}\n"
-            f"Temperature: {data["current"]["temp_c"]} Celsius degrees"
+            f"Location: {location['name']}, {location['country']}\n"
+            f"Time: {location['localtime']}\n"
+            f"Temperature: {data['current']['temp_c']} Celsius degrees"
         )
     else:
         print("Error:", res.status_code, res.text)
