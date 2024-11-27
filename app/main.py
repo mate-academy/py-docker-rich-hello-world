@@ -22,10 +22,12 @@ def get_weather() -> None:
     res = requests.get(BASE_URL, params=params)
     if res.status_code == 200:
         data = res.json()
+        location = data["location"]
+
         print(f"Taking weather information about {CITY} from Weather API")
         print(
-            f"Location: {data["location"]["name"]}, {data["location"]["country"]}\n"
-            f"Time: {data["location"]["localtime"]}\n"
+            f"Location: {location["name"]}, {location["country"]}\n"
+            f"Time: {location["localtime"]}\n"
             f"Temperature: {data["current"]["temp_c"]} Celsius degrees"
         )
     else:
