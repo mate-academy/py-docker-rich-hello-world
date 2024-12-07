@@ -1,0 +1,9 @@
+venv
+.github
+.gitignore
+.idea
+.flake8
+Dockerfile
+checklist.md
+README.md
+result.png
