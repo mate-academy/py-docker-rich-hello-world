@@ -10,7 +10,7 @@ if not API_KEY:
     raise ValueError("API_KEY environment variable is required")
 
 
-def get_weather():
+def get_weather() -> None:
     params = {
         "key": API_KEY,
         "q": CITY,
