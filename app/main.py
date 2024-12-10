@@ -13,8 +13,7 @@ def get_weather() -> None:
     }
 
     get_weather_in_paris_url = (
-        "http://api.weatherapi.com/v1//"
-        "current.json?q=Paris"
+        "http://api.weatherapi.com/v1/current.json?q=Paris"
     )
 
     response = requests.get(get_weather_in_paris_url, params=params)
@@ -30,9 +29,11 @@ def get_weather() -> None:
             f" - Region: {location["region"]} "
             f" {location["localtime"]} "
         )
-        print(f"Temperature: "
-              f" {current["temp_c"]}"
-              f" celsius")
+        print(
+            f"Temperature: "
+            f" {current["temp_c"]}"
+            f" celsius"
+        )
     else:
         print("Weather is currently unavailable")
 
