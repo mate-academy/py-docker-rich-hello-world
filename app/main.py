@@ -25,10 +25,10 @@ def get_weather() -> None:
         current = weather.get("current", {})
         print(
             f"Country: "
-            f"{location["country"]}"
-            f" - City: {location["name"]}"
-            f" - Region: {location["region"]} | "
-            f" {location["localtime"]}"
+            f"{location["country"]} "
+            f" - City: {location["name"]} "
+            f" - Region: {location["region"]} "
+            f" {location["localtime"]} "
         )
         print(f"Temperature: "
               f" {current["temp_c"]}"
