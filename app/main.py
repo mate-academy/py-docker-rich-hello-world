@@ -21,11 +21,11 @@ def get_weather() -> None:
     if weather:
         location = weather.get("location")
         current = weather.get("current", {})
-        print(f"Country: {location["country"]}")
-        print(f"City: {location["name"]}")
-        print(f"Region: {location["region"]}")
-        print(f"{location["localtime"]}")
-        print(f"Temperature: {current["temp_c"]} celsius")
+        print(f"Country: {location['country']}")
+        print(f"City: {location['name']}")
+        print(f"Region: {location['region']}")
+        print(f"{location['localtime']}")
+        print(f"Temperature: {current['temp_c']} celsius")
 
     else:
         print("Weather is currently unavailable")
