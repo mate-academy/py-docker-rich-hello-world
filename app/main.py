@@ -36,7 +36,7 @@ def get_weather() -> None:
 
     except requests.exceptions.RequestException as e:
         print(f"Failed to fetch weather data: {e}")
-    except KeyError as e:
+    except Exception as e:
         print(f"Unexpected response structure: {e}")
 
 
