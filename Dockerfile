@@ -4,7 +4,7 @@ LABEL maintainer="vladislav.tmf@gmail.com"
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /app
+WORKDIR /src
 
 COPY requirements.txt requirements.txt
 
