@@ -1,5 +1,5 @@
 FROM python:3.12.8-alpine
-LABEL mainteiner="sberdianskyi@mate.com"
+LABEL maintainer="sberdianskyi@mate.com"
 ENV PYTHONBUFFERED=1
 
 WORKDIR /app
