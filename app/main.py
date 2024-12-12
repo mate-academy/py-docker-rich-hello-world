@@ -5,6 +5,7 @@ import requests
 API_URL = "http://api.weatherapi.com/v1/current.json"
 CITY = "Paris"
 
+
 def get_weather() -> None:
     """
     Fetches current weather data for Paris city and displays it in the console.
@@ -32,6 +33,7 @@ def get_weather() -> None:
         f"{CITY}/{country} {local_time} Weather: {current_temp} Celsius, "
         f"{current_conditions}"
     )
+
 
 if __name__ == "__main__":
     get_weather()
