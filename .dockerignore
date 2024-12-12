@@ -1,0 +1,17 @@
+*.iml
+*.png
+**__pycache__/
+*venv/
+.DS_Store
+.dockerignore
+.env
+.env.sample
+.flake8
+.github/
+.gitignore
+.idea/
+.pytest_cache/
+.vscode/
+checklist.md
+Dockerfile
+README.md
