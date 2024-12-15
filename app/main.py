@@ -8,7 +8,7 @@ load_dotenv()
 def get_weather() -> dict:
     URL = "http://api.weatherapi.com/v1/current.json"
     CITY = "Paris"
-    res = requests.get(f"{URL}?key={os.getenv("API_KEY")}&q={CITY}")
+    res = requests.get(f'{URL}?key={os.getenv("API_KEY")}&q={CITY}')
     city = res.json()["location"]["name"]
     country = res.json()["location"]["country"]
     date = res.json()["location"]["localtime"]
