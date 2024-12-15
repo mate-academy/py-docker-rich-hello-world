@@ -8,20 +8,26 @@ URL = "https://api.weatherapi.com/v1/current.json?"
 FILTERING = "Paris"
 
 
+def parse_weather_data(weather_data: dict) -> str:
+    try:
+        city = weather_data["location"]["name"]
+        country = weather_data["location"]["country"]
+        local_time = weather_data["location"]["localtime"]
+        temperature = weather_data["current"]["temp_c"]
+        condition = weather_data["current"]["condition"]["text"]
+
+        return (
+            f"{city}/{country} {local_time} "
+            f"Weather: {temperature} Celsius, {condition}"
+        )
+    except KeyError as e:
+        return f"Missing data in response: {e}"
+
+
 def get_weather() -> None:
     result = requests.get(f"{URL}key={API_KEY}&q={FILTERING}").json()
 
-    city = result["location"]["name"]
-    country = result["location"]["country"]
-    local_time = result["location"]["localtime"]
-    temperature = result["current"]["temp_c"]
-    condition = result["current"]["condition"]["text"]
-
-    print("Performing request to Weather API for city Paris...")
-    print(
-        f"{city}/{country} {local_time} "
-        f"Weather: {temperature} Celsius, {condition}"
-    )
+    print(parse_weather_data(result))
 
 
 if __name__ == "__main__":

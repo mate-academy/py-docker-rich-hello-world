@@ -1,10 +1,12 @@
 FROM python:3.11.6-alpine3.18
 
-ENV PYTHONUNBUFFERED 1
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-WORKDIR app/
+RUN adduser -D myuser
+USER myuser
 
 COPY . .
-RUN pip install -r requirements.txt
 
-CMD ["python", "app/main.py"]
+CMD ["python3", "app/main.py"]
