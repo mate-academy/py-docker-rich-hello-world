@@ -1,0 +1,6 @@
+.dockerignore
+.venv
+Dockerfile
+.github
+.gitignore
+result.png
