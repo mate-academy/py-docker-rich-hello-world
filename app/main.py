@@ -19,7 +19,7 @@ def get_weather(city: str, api_key: str) -> None:
         print(
             f"{data["location"]["name"]}/{data["location"]["country"]} "
             f"{data["current"]["last_updated"]} "
-            f"Weather: {data["current"]["temp_c"]} Celsius, {data["current"]["condition"]["text"]}" #noqa
+            f"Weather: {data["current"]["temp_c"]} Celsius, {data["current"]["condition"]["text"]}"  # noqa
         )
     except KeyError as e:
         print(e)
