@@ -3,7 +3,7 @@ import os
 import requests
 
 
-API_KEY = os.getenv("api_key")
+API_KEY = os.getenv("API_KEY")
 URL = "https://api.weatherapi.com/v1/current.json?"
 FILTERING = "Paris"
 
@@ -25,9 +25,13 @@ def parse_weather_data(weather_data: dict) -> str:
 
 
 def get_weather() -> None:
-    result = requests.get(f"{URL}key={API_KEY}&q={FILTERING}").json()
-
-    print(parse_weather_data(result))
+    try:
+        weather_response = requests.get(f"{URL}key={API_KEY}&q={FILTERING}")
+        weather_response.raise_for_status()
+        weather_data = weather_response.json()
+        print(parse_weather_data(weather_data))
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching weather data: {e}")
 
 
 if __name__ == "__main__":
