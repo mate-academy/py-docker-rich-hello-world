@@ -32,7 +32,8 @@ def get_weather() -> None:
     except JSONDecodeError as exc:
         print(f"Error: Couldn’t decode the text into json {exc}")
     except RequestException as exc:
-        print(f"Error: There was an ambiguous exception that occurred while handling your request. {exc}")
+        print(f"Error: There was an ambiguous exception that"
+              f" occurred while handling your request. {exc}")
 
 
 def weather_data_output(weather_data: dict) -> None:
@@ -46,6 +47,7 @@ def weather_data_output(weather_data: dict) -> None:
         f"{city}/{country} {last_updated}"
         f" Weather: {degrees} Celsius, {description}"
     )
+
 
 if __name__ == "__main__":
     get_weather()
