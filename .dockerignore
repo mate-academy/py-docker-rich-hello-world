@@ -1,0 +1,14 @@
+*.pyc
+__pycache__/
+.git/
+.github
+README.md
+result.png
+checklist.md
+.venv
+venv
+*.pyo
+*.pyd
+*.sqlite3
+.DS_Store
+.env
