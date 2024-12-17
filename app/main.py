@@ -1,19 +1,21 @@
 import os
 
 import requests
-from dotenv import load_dotenv
+from requests import (
+    ConnectionError,
+    JSONDecodeError,
+    RequestException
+)
 
-
-load_dotenv()
 
 URL = "https://api.weatherapi.com/v1/current.json"
-API_KEY = os.getenv("API_KEY")
-FILTERING = "Paris"
+API_KEY = os.environ["API_KEY"]
+FILTERING = os.environ.get("SEARCH_CITY", "Paris")
 
 
 def get_weather() -> None:
-    # write your code here
     print("Performing request to Weather API for city Paris...")
+
     try:
         response = requests.get(
             URL,
@@ -21,21 +23,29 @@ def get_weather() -> None:
                 "q": FILTERING,
                 "key": API_KEY
             }
-        ).json()
-    except requests.RequestException as error:
-        print(error)
+        )
+        response.raise_for_status()
+        weather_data = response.json()
+        weather_data_output(weather_data)
+    except ConnectionError as exc:
+        print(f"Error: A Connection error occured {exc}")
+    except JSONDecodeError as exc:
+        print(f"Error: Couldn’t decode the text into json {exc}")
+    except RequestException as exc:
+        print(f"Error: There was an ambiguous exception that occurred while handling your request. {exc}")
 
-    city = response.get("location").get("name")
-    country = response.get("location").get("country")
-    last_updated = response.get("current").get("last_updated")
-    degrees = response.get("current").get("temp_c")
-    description = response.get("current").get("condition").get("text")
+
+def weather_data_output(weather_data: dict) -> None:
+    city = weather_data["location"]["name"]
+    country = weather_data["location"]["country"]
+    last_updated = weather_data["current"]["last_updated"]
+    degrees = weather_data["current"]["temp_c"]
+    description = weather_data["current"]["condition"]["text"]
 
     print(
         f"{city}/{country} {last_updated}"
         f" Weather: {degrees} Celsius, {description}"
     )
-
 
 if __name__ == "__main__":
     get_weather()

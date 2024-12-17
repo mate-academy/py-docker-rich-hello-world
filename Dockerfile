@@ -1,13 +1,29 @@
-FROM python:3.12-alpine3.21
+ARG PYTHON_VERSION=3.12
+FROM python:${PYTHON_VERSION}-slim as base
 LABEL maintainer="dmysamo@gmail.com"
 
-ENV PYTHOUNNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
 
-WORKDIR forecast_app/
+ARG UID=10001
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "/app" \
+    --shell "/sbin/nologin" \
+    --no-create-home \
+    --uid "${UID}" \
+    appuser
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+WORKDIR /app
 
-COPY . .
+COPY . /app
+
+RUN chown -R appuser:appuser /app
+
+USER appuser
+
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+EXPOSE 8000
 
 CMD ["python", "app/main.py"]
