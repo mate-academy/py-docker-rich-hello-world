@@ -1,22 +1,38 @@
 import os
 import requests
+from requests.exceptions import (
+    ConnectionError,
+    JSONDecodeError,
+    RequestException
+)
 
 
 URL = "http://api.weatherapi.com/v1/current.json?"
-API_KEY = os.getenv("API_KEY")
-FILTERING = os.getenv("FILTERING", "Paris")
+API_KEY = os.environ["API_KEY"]
+FILTERING = os.environ.get("FILTERING", "Paris")
 
 
-def get_weather(city: str, api_key: str) -> None:
+def get_weather() -> dict:
+    url = f"{URL}q={FILTERING}&key={API_KEY}"
+    weather_data = fetch_data(url)
+    print_weather_data(weather_data)
+
+
+def fetch_data(url: str) -> dict:
     try:
-        response = requests.get(f"{URL}q={city}&key={api_key}")
+        response = requests.get(url)
         response.raise_for_status()
         data = response.json()
-        print_weather(data)
-    except requests.RequestException as e:
-        print(f"Error fetching data {e}")
-        
-def print_weather(data: dict) -> None:
+        return data
+    except ConnectionError as exs:
+        print(f"Connection failed: {exs}")
+    except JSONDecodeError as exs:
+        print(f"Decoding failed: {exs}")
+    except RequestException as exs:
+        print(f"Request failed: {exs}")
+
+
+def print_weather_data(data: dict) -> None:
     try:
         print(
             f"{data["location"]["name"]}/{data["location"]["country"]} "
@@ -29,4 +45,4 @@ def print_weather(data: dict) -> None:
 
 
 if __name__ == "__main__":
-    get_weather(FILTERING, API_KEY)
+    get_weather()
