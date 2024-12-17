@@ -24,24 +24,24 @@ def fetch_data(url: str) -> dict:
         response.raise_for_status()
         data = response.json()
         return data
-    except ConnectionError as exs:
-        print(f"Connection failed: {exs}")
-    except JSONDecodeError as exs:
-        print(f"Decoding failed: {exs}")
-    except RequestException as exs:
-        print(f"Request failed: {exs}")
+    except ConnectionError as exc:
+        print(f"Connection failed: {exc}")
+    except JSONDecodeError as exc:
+        print(f"Decoding failed: {exc}")
+    except RequestException as exc:
+        print(f"Request failed: {exc}")
 
 
 def print_weather_data(data: dict) -> None:
     try:
         print(
-            f"{data["location"]["name"]}/{data["location"]["country"]} "
-            f"{data["current"]["last_updated"]} "
-            f"Weather: {data["current"]["temp_c"]} "
-            f"Celsius, {data["current"]["condition"]["text"]}"
+            f'{data["location"]["name"]}/{data["location"]["country"]} '
+            f'{data["current"]["last_updated"]} '
+            f'Weather: {data["current"]["temp_c"]} '
+            f'Celsius, {data["current"]["condition"]["text"]}'
         )
-    except KeyError as e:
-        print(e)
+    except KeyError as exc:
+        print(f"No such key: {exc}")
 
 
 if __name__ == "__main__":
