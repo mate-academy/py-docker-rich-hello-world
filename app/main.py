@@ -12,14 +12,17 @@ def get_weather(city: str, api_key: str) -> None:
         response = requests.get(f"{URL}q={city}&key={api_key}")
         response.raise_for_status()
         data = response.json()
+        print_weather(data)
     except requests.RequestException as e:
         print(f"Error fetching data {e}")
-
+        
+def print_weather(data: dict) -> None:
     try:
         print(
             f"{data["location"]["name"]}/{data["location"]["country"]} "
             f"{data["current"]["last_updated"]} "
-            f"Weather: {data["current"]["temp_c"]} Celsius, {data["current"]["condition"]["text"]}" # noqa
+            f"Weather: {data["current"]["temp_c"]} "
+            f"Celsius, {data["current"]["condition"]["text"]}"
         )
     except KeyError as e:
         print(e)
