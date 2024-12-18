@@ -7,7 +7,7 @@ BASE_URL = "http://api.weatherapi.com/v1/current.json?"
 FILTERING = "Paris"
 
 
-def parse_data(weather_data):
+def parse_data(weather_data: dict) -> str:
     try:
         city = weather_data["location"]["name"]
         country = weather_data["location"]["country"]
@@ -15,7 +15,9 @@ def parse_data(weather_data):
         temperature = weather_data["current"]["temp_c"]
         condition = weather_data["current"]["condition"]["text"]
 
-        result = f"{city}/{country} {time} Weather: {temperature} Celsius, {condition}"
+        result = (f"{city}/{country} {time} "
+                  f"Weather: {temperature} "
+                  f"Celsius, {condition}")
 
         return result
     except KeyError as e:
