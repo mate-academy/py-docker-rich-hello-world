@@ -7,12 +7,12 @@ load_dotenv()
 
 
 def get_weather() -> None:
-    API_KEY = os.getenv("API_KEY")
-    FILTERING = os.getenv("FILTERING")
-    print(f"Performing request to Weather API for city {FILTERING}...")
+    api_key = os.getenv("API_KEY")
+    filtering = os.getenv("FILTERING")
+    print(f"Performing request to Weather API for city {filtering}...")
     res = requests.get(
         f"https://api.weatherapi.com/v1/"
-        f"current.json?key={API_KEY}&q={FILTERING}"
+        f"current.json?key={api_key}&q={filtering}"
         f"&aqi=no"
     )
     res = res.json()
