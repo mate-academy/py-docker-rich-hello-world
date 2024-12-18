@@ -21,10 +21,10 @@ def get_weather(city: str) -> None:
 
         city = data["location"]["name"]
         country = data["location"]["country"]
-        datatime = data["location"]["localtime"]
+        datetime = data["location"]["localtime"]
         temperature = data["current"]["temp_c"]
         condition = data["current"]["condition"]["text"]
-        print(f"{city}/{country} {datatime} "
+        print(f"{city}/{country} {datetime} "
               f"Weather: {temperature} {condition}")
     else:
         print(f"Error {response.status_code}: {response.text}")
