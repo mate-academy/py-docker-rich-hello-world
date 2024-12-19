@@ -6,11 +6,11 @@ from dotenv import load_dotenv
 def get_weather() -> None:
     load_dotenv()
     api_key = os.getenv("API_KEY")
-    URL = f"http://api.weatherapi.com/v1/current.json?key={api_key}"
-    FILTERING = "Paris"
+    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}"
+    filtering = "Paris"
 
-    print(f"Performing request to Weather API for city {FILTERING}...")
-    response = requests.get(URL + f"&q={FILTERING}")
+    print(f"Performing request to Weather API for city {filtering}...")
+    response = requests.get(url + f"&q={filtering}")
     data = response.json()
 
     print(
