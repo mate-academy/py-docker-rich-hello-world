@@ -3,7 +3,7 @@ import requests
 from requests import Response
 
 
-def get_weather(api_key: str, city: str = "Paris") -> Response:
+def get_weather(api_key: str, city: str = "Paris") -> None:
     base_url = "http://api.weatherapi.com/v1/current.json"
     params = {"key": api_key, "q": city}
     response = requests.get(base_url, params=params)
