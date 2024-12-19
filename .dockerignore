@@ -2,7 +2,7 @@
 .flake8
 .gitignore
 checklist.md
-.githab
+.github
 Dockerfile
 .git
 .idea
