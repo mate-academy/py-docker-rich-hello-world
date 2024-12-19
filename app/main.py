@@ -26,7 +26,8 @@ def get_weather() -> None:
             current_time = location["localtime"]
             temperature = current_weather["temp_c"]
             condition = current_weather["condition"]["text"]
-            print(f"{FILTERING}/{country} {current_time} Weather: {temperature} Celsius, {condition}")
+            print(f"{FILTERING}/{country} {current_time}"
+                  f"Weather: {temperature} Celsius, {condition}")
         else:
             print("Failed to retrieve weather data.")
     else:
