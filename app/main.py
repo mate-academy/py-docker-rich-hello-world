@@ -13,10 +13,14 @@ def get_weather() -> None:
     if not key:
         print("No API key provided")
         return
-    request = requests.get(
-        URL,
-        params={"key": key, "q": CITY},
-    )
+    try:
+        request = requests.get(
+            URL,
+            params={"key": key, "q": CITY},
+        )
+    except requests.exceptions.RequestException as e:
+        print(e)
+        return
     if request.status_code == 200:
         data = request.json()["current"]
         time = data.get("last_updated")
