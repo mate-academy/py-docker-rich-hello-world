@@ -1,13 +1,9 @@
 import os
 
-from dotenv import load_dotenv
-
 import requests
 
-load_dotenv()
 
-
-FILTERING = "Kyiv"
+FILTERING = "Paris"
 URL = "https://api.weatherapi.com/v1/current.json"
 
 
@@ -18,16 +14,19 @@ def get_weather() -> None:
 
     result = requests.get(URL + f"?key={api_key}&q={FILTERING}")
 
+    print("Performing request to Weather API for city Paris ...")
+
     if result.status_code == 200:
         weather_data = result.json()
-        current_weather = weather_data.get("current", {})
+        current_weather = weather_data["current"]
+        location = weather_data["location"]
 
         if current_weather:
-            temperature = current_weather.get("temp_c")
-            condition = current_weather.get("condition", {}).get("text")
-            print(f"Weather in {FILTERING}:")
-            print(f"Temperature: {temperature}°C")
-            print(f"Weather condition: {condition}")
+            country = location["country"]
+            current_time = location["localtime"]
+            temperature = current_weather["temp_c"]
+            condition = current_weather["condition"]["text"]
+            print(f"{FILTERING}/{country} {current_time} Weather: {temperature} Celsius, {condition}")
         else:
             print("Failed to retrieve weather data.")
     else:

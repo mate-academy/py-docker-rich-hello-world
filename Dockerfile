@@ -1,5 +1,5 @@
-FROM python:3.11.4-slim
-LABEL mantainer="volodymyr_dolgyi@ukr.net"
+FROM python:3.11.4-alpine
+LABEL maintainer="volodymyr_dolgyi@ukr.net"
 
 ENV PYTHONUNBUFFERED=1
 
