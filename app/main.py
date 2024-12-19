@@ -11,7 +11,8 @@ PARAMS = {
     "q": "Paris",
 }
 
-def get_res():
+
+def get_res() -> dict:
     try:
         print("Performing request to Weather API to city Paris...")
         response = requests.get(URL, params=PARAMS)
@@ -21,6 +22,7 @@ def get_res():
     except requests.exceptions.RequestException as err:
         print(f"REQUEST ERROR: {err}")
     return response.json()
+
 
 def get_weather() -> None:
     weather = get_res()
