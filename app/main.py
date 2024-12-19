@@ -14,7 +14,7 @@ def get_weather(city: str, key: str) -> None:
         response = requests.get(f"{URL}key={API_KEY}&q={CITY}&aqi=no")
         response.raise_for_status()
         data = response.json()
-        print(f"{data["location"]["name"]}/{data["location"]["country"]} "
+        print(f"{data["location"]["name"]}/{data["location"]["country"]} " # noqa
               f"{data["current"]["last_updated"]} "
               f"Weather: {data["current"]["temp_c"]} Celsius, "
               f"{data["current"]["condition"]["text"]}")
