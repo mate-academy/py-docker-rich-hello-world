@@ -14,7 +14,7 @@ PARAMS = {
 
 def get_res() -> dict:
     if not API_KEY:
-        raise ValueError("API key is not set!")
+        raise ValueError("API key is not set!!!")
     try:
         print("Performing request to Weather API to city Paris...")
         response = requests.get(URL, params=PARAMS)
