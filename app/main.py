@@ -1,6 +1,5 @@
 import os
 import requests
-from requests import Response
 
 
 def get_weather(api_key: str, city: str = "Paris") -> None:
