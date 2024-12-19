@@ -14,11 +14,11 @@ def get_weather() -> None:
     data = response.json()
 
     print(
-        f"{data["location"]["name"]}/"
-        f"{data["location"]["country"]} "
-        f"{data["location"]["localtime"]} "
-        f"Weather: {data["current"]["temp_c"]} Celsius, "
-        f"{data["current"]["condition"]["text"]}"
+        f"{data['location']['name']}/"
+        f"{data['location']['country']} "
+        f"{data['location']['localtime']} "
+        f"Weather: {data['current']['temp_c']} Celsius, "
+        f"{data['current']['condition']['text']}"
     )
 
 
