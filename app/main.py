@@ -5,11 +5,11 @@ from requests import RequestException
 
 
 URL = "http://api.weatherapi.com/v1/current.json"
-API_KEY = os.environ["API_KEY"]
+API_KEY = os.environ.get("API_KEY")
 FILTERING = "Paris"
 
 
-def get_weather() -> None:
+def get_response():
     try:
         response = requests.get(URL + f"?key={API_KEY}&q={FILTERING}")
     except ConnectionError:
@@ -19,6 +19,11 @@ def get_weather() -> None:
     except RequestException:
         raise RequestException("An error occurred while making the request.")
 
+    return response
+
+
+def get_weather() -> None:
+    response = get_response()
     if response.status_code == 200:
         try:
             city = response.json().get("location").get("name")
