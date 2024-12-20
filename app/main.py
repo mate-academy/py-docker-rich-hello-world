@@ -1,5 +1,3 @@
-from webbrowser import Error
-
 import requests
 import os
 
@@ -35,6 +33,7 @@ def get_weather() -> None:
         print(fetch_weather(weather_data))
     except requests.exceptions.RequestException as e:
         print(f"Error fetching weather data: {e}")
+
 
 if __name__ == "__main__":
     get_weather()
