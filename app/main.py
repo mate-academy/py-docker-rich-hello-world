@@ -1,22 +1,25 @@
-import json
 import os
 
 import requests
-from dotenv import load_dotenv
-
-load_dotenv()
-BASE_URL = "https://api.weatherapi.com/v1/current.json?"
-API_KEY = os.getenv("API_KEY")
-CITY = "PARIS"
 
 
-def get_weather() -> None:
-
-    url = BASE_URL + f"q={CITY}&key={API_KEY}"
-    response = requests.get(url).json()
-    formatted_json = json.dumps(response, ensure_ascii=False, indent=4)
-    print(formatted_json)
+def get_weather(api_key: str) -> None:
+    url = "http://api.weatherapi.com/v1/current.json"
+    params = {"key": api_key, "q": "Paris"}
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        print(f"City: {data['location']['name']}")
+        print(f"Country: {data['location']['country']}")
+        print(f"Temp: {data['current']['temp_c']}°C")
+        print(f"Condition: {data['current']['condition']['text']}")
+    else:
+        print(f"Error: {response.status_code}")
 
 
 if __name__ == "__main__":
-    get_weather()
+    api_key = os.getenv("API_KEY")
+    if not api_key:
+        print("API_KEY environment variable is missing.")
+    else:
+        get_weather(api_key)
