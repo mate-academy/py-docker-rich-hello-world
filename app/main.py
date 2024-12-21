@@ -33,10 +33,12 @@ def get_weather() -> None:
             country = location.get("country")
             localtime = location.get("localtime")
 
-            celsius =current_weather.get("temp_c")
+            celsius = current_weather.get("temp_c")
             condition = current_weather.get("condition").get("text")
         except (ValueError, KeyError):
-            raise ValueError("Failed to decode the JSON response or missing expected data.")
+            raise ValueError(
+                "Failed to decode the JSON response or missing expected data."
+            )
     else:
         print("Failed to retrieve required data.")
 
