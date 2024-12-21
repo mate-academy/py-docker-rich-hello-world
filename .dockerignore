@@ -1,0 +1,12 @@
+.venv
+checklist.md
+README.md
+result.png
+.env
+**db.sqlite3
+.DS_Store
+.github
+.gitignore
+.idea/
+.pytest_cache/
+Dockerfile
