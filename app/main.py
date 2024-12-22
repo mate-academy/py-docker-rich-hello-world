@@ -6,7 +6,7 @@ import requests
 API_KEY = os.getenv("API_KEY")
 URL = "https://api.weatherapi.com/v1/current.json?"
 FILTERING = "Paris"
-a = 1
+
 
 def parse_weather_data(weather_data: dict) -> str:
     try:
