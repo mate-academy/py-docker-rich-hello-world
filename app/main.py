@@ -16,7 +16,8 @@ def get_weather() -> None:
     )
     response.raise_for_status()
     data = response.json()
-    print(data)
+    print(f"{data["location"]["name"]} {data["location"]["country"]}"
+          f" {data["location"]["localtime"]} {data["current"]["temp_c"]} C")
 
 
 if __name__ == "__main__":
