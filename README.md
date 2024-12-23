@@ -1,39 +1,39 @@
 # Docker Weather API
 
-- **Read** [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
-- Look through [Weather API](https://www.weatherapi.com/docs/) documentation, you will need it in this task
+- **Прочитайте** [інструкцію](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) перед початком роботи.
+- Ознайомтесь із [документацією Weather API](https://www.weatherapi.com/docs/), вона знадобиться для виконання цього завдання.
 
-## Task
+## Завдання
 
-In this task you will be implementing the service for getting current weather
-for Paris city. But the most interesting part, that this service must be dockerized
-and pushed to the dockerhub. Use [Weather API](https://www.weatherapi.com/docs/) for getting
-data about the weather.
+У цьому завданні вам потрібно реалізувати сервіс для отримання поточної погоди 
+для міста Париж. Але найцікавіша частина полягає в тому, що цей сервіс має бути 
+задокеризований і опублікований у Docker Hub. Використовуйте [Weather API](https://www.weatherapi.com/docs/) 
+для отримання даних про погоду.
 
-The result of this task will be tested by the next commands:
+Результат цього завдання буде протестовано за допомогою таких команд:
 ![img.png](result.png)
-Of course, instead of `danylott` - it must be your docker id.
+Звичайно, замість `danylott` має бути ваш Docker ID.
 
-So in this task requirements are next:
-- The script for getting & printing weather info must be located at `app/main.py`;
-- This service must be Dockerized using only `Dockerfile` (`docker-compose.yml` here is forbidden);
-- The image of the service should be as thin as possible;
-- Use `.dockerignore` file to avoid adding unnecessary stuff to docker image;
-- You must use `requests` module for interacting with Weather API;
-- You must publish your image to Docker Hub and check it is available for the world;
-- You need to generate `API_KEY` for using Weather API, but it shouldn't be hard-coded in `main.py`. 
+Отже, вимоги до цього завдання наступні:
+- Скрипт для отримання та виведення інформації про погоду має знаходитися у файлі `app/main.py`;
+- Цей сервіс повинен бути задокеризований за допомогою лише `Dockerfile` (використання `docker-compose.yml` заборонено);
+- Образ сервісу має бути якомога меншим;
+- Використовуйте файл `.dockerignore`, щоб уникнути додавання зайвих файлів до образу Docker;
+- Ви повинні використовувати модуль `requests` для взаємодії з Weather API;
+- Ви повинні опублікувати свій образ у Docker Hub і переконатися, що він доступний для всіх;
+- Ви маєте згенерувати `API_KEY` для використання Weather API, але він не повинен бути жорстко прописаний у `main.py`.
 
-  You should use environment variables for that purpose. So, read `API_KEY` from environment. 
-  And to pass environment variables to docker container use `-e` flag.
-- Don't forget to add `.dockerignore` file to your PR;
-- You must *modify* this line with correct command to pull your image:
+  Ви повинні використовувати змінні середовища для цього. Зчитуйте `API_KEY` із середовища. 
+  Щоб передати змінні середовища до контейнера Docker, використовуйте прапорець `-e`.
+- Не забудьте додати файл `.dockerignore` до свого pull request;
+- Ви повинні *змінити* цей рядок, вказавши правильну команду для завантаження вашого образу:
   COMMAND=`docker pull <YOUR_DOCKER_ID/YOUR_IMAGE_NAME>`.
 
 <details>
-  <summary><strong>Hint</strong></summary>
-    Don't use `< >` in docker command. Here is the example:
+  <summary><strong>Підказка</strong></summary>
+    Не використовуйте `< >` у команді Docker. Ось приклад:
 
 ```docker pull test_user/weather```
 </details>
 
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+### Примітка: Перевірте свій код за допомогою цього [чекліста](checklist.md) перед тим, як завантажувати своє рішення.
