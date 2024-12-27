@@ -13,8 +13,8 @@ def get_weather() -> None:
     if not city:
         raise ValueError("CITY is not set")
 
-    URL = "http://api.weatherapi.com/v1/current.json?"
-    response = requests.get(URL + f"key={api_key}&q={city}")
+    url = "http://api.weatherapi.com/v1/current.json?"
+    response = requests.get(url + f"key={api_key}&q={city}")
     if response.status_code == 200:
         return (
             f"{response.json()['location']['name']}/"
