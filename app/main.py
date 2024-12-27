@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def get_weather() -> None:
+def get_weather() -> str:
     api_key = os.getenv("API_KEY")
     city = os.getenv("CITY")
     if not api_key:
