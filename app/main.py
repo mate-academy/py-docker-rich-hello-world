@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def get_weather():
+def get_weather() -> None:
     api_key = os.getenv("API_KEY")
     if not api_key:
         raise ValueError("API_KEY not found in environment variables")
@@ -27,7 +27,9 @@ def get_weather():
     print(f"Country: {location.get('country', 'Unknown')}")
     print(f"Temperature: {current.get('temp_c', 'Unknown')}°C")
     print(f"Condition: {current.get('condition', {}).get('text', 'Unknown')}")
-    print(f"Wind: {current.get('wind_kph', 'Unknown')} kph, Direction: {current.get('wind_dir', 'Unknown')}")
+    print(f"Wind: {current.get('wind_kph', 'Unknown')} kph,"
+          f" Direction: {current.get('wind_dir', 'Unknown')}"
+          )
     print(f"Humidity: {current.get('humidity', 'Unknown')}%")
     print(f"Cloud Cover: {current.get('cloud', 'Unknown')}%")
     print(f"Visibility: {current.get('vis_km', 'Unknown')} km")
