@@ -5,8 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def get_weather() -> None:
-    api_key = os.getenv("API_KEY")
+def get_weather(city: str, api_key: any) -> None:
     if not api_key:
         raise ValueError("API_KEY not found in environment variables")
 
@@ -36,4 +35,4 @@ def get_weather() -> None:
 
 
 if __name__ == "__main__":
-    get_weather()
+    get_weather(city="Paris", api_key=os.getenv("API_KEY"))
