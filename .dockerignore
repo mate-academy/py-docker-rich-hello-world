@@ -1,0 +1,22 @@
+# Ignore Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.pytest_cache/
+
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore Git files
+.git/
+.gitignore
+
+# Ignore Docker files not needed in the image
+.dockerignore
+Dockerfile
+
+# Ignore IDE/editor files
+.idea/
+.vscode/
+*.swp
