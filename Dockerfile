@@ -1,8 +1,8 @@
 FROM python:3.10.8-slim
-LABEL mainteirner="hbaklanova@gmail.com"
+LABEL maintainer="hbaklanova@gmail.com"
 
 
-ENV PYTHONNBUFFERD 1
+ENV PYTHONUNBUFFERED 1
 
 WORKDIR /home/halyna/projects/py-docker-weather-api/app
 
