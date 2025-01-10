@@ -1,9 +1,9 @@
 FROM python:3.11.11-alpine3.20
 LABEL maintainer="paziuka.anastasiia@gmail.com"
 
-ENV PYTHOUNNBUFFERED 1
+ENV PYTHONUNBUFFERED 1
 
-WORKDIR app/
+WORKDIR app
 
 COPY requirements.txt requirements.txt
 

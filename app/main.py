@@ -17,7 +17,6 @@ def get_weather() -> None:
     params = {
         "key": api_key,
         "q": "Paris",
-        "days": 1,
     }
 
     try:
