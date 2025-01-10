@@ -1,11 +1,17 @@
+import os
+from dotenv import load_dotenv
+
 import requests
 
+load_dotenv()
 URL = "https://api.weatherapi.com/v1/"
-API_KEY = "171e9f9e10f54ee4a5a144342250901"
-FILTERING = "London"
+API_KEY = os.getenv("API_KEY")
+
+FILTERING = "Paris"
 
 
 def get_weather() -> None:
+    print(API_KEY)
     response = requests.get(f"{URL}current.json?key={API_KEY}&q={FILTERING}")
     print(response.json())
 
