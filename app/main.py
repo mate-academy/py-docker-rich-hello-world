@@ -4,9 +4,10 @@ import requests
 
 
 def get_weather() -> None:
-    API_KEY = os.getenv("API_KEY", "No API key provided")
-    CITY = os.getenv("CITY", "Kyiv")
-    url = f"https://api.weatherapi.com/v1/current.json?key={API_KEY}&q={CITY}&aqi=no"
+    api_key = os.getenv("API_KEY", "No API key provided")
+    city = os.getenv("CITY", "Kyiv")
+    url = (f"https://api.weatherapi.com/v1/current.json?key="
+           f"{api_key}&q={city}&aqi=no")
     response = requests.get(url)
     if response.status_code == 200:
         weather_data = response.json()
