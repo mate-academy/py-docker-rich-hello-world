@@ -1,25 +1,25 @@
 import os
+
 import requests
+from dotenv import load_dotenv
 from requests.exceptions import (
     ConnectionError,
     JSONDecodeError,
     RequestException
 )
 
-from dotenv import load_dotenv
 
 load_dotenv()
 
 URL = "http://api.weatherapi.com/v1/current.json?"
 FILTERING = "Paris"
-API_KEY = os.getenv("API_KEY")
+API_KEY = os.environ["API_KEY"]
 
 
 def get_weather() -> None:
-    if not API_KEY:
-        print("API key is missing. Please add it to the environment variables")
-        return
-
+    """
+    Get weather data from the API and print it.
+    """
     url = f"{URL}q={FILTERING}&key={API_KEY}"
     weather_data = fetch_data(url)
     if weather_data:
@@ -27,6 +27,9 @@ def get_weather() -> None:
 
 
 def fetch_data(url: str) -> dict:
+    """
+    Fetch data from the API.
+    """
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -41,6 +44,9 @@ def fetch_data(url: str) -> dict:
 
 
 def print_weather_data(data: dict) -> None:
+    """
+    Print weather data.
+    """
     try:
         location = data["location"]
         current = data["current"]
